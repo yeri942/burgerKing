@@ -4,6 +4,9 @@ import react, { useState, useEffect } from "react";
 
 function App() {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
+    const [pattyIndex, setPattyIndex] = useState(0);
+    const patties = ["beef", "chicken"];
+
     const handleFollow = () => {
         setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
     };
@@ -23,7 +26,7 @@ function App() {
     });
     return (
         <WrabMain>
-            <Wrab>
+            <Wrab scroll={ScrollY}>
                 {ScrollY < 108 ? (
                     <WrabScroll>
                         <Mouse src="./img/mousescroll.png"></Mouse>
@@ -35,13 +38,16 @@ function App() {
                         <NextButton type="button"></NextButton>
                     </WrabBtn>
                 )}
-
-                <WrabBurgerText>
+                <WrabMainTexts>
                     <div>
-                        <BurgerText scroll={ScrollY}>Beef</BurgerText>
-                        <BurgerText scroll={ScrollY}>Burger</BurgerText>
+                        <MainText scroll={ScrollY}>Choice</MainText>
+                        <MainText scroll={ScrollY}>Your</MainText>
+                        <MainText scroll={ScrollY}>Burger</MainText>
                     </div>
-                </WrabBurgerText>
+                </WrabMainTexts>
+                <WrabPattyTexts>
+                    <PattyText scroll={ScrollY}>BEEF</PattyText>
+                </WrabPattyTexts>
                 <WrabBurgerImg>
                     <BurgerImg
                         style={{
@@ -88,7 +94,7 @@ function App() {
                     <BurgerImg
                         style={{
                             background:
-                                "center / cover no-repeat url(./img/patty.png)",
+                                "center / cover no-repeat url(./img/beef_patty.png)",
                         }}
                         scroll={ScrollY}
                     ></BurgerImg>
@@ -112,7 +118,8 @@ const Wrab = styled.div`
     width: 100%;
     height: 100vh;
     text-align: center;
-    background-color: orange;
+    background-color: ${(props) => (props.scroll > 100 ? "#A15800" : "orange")};
+    transition: 1s;
 `;
 const WrabScroll = styled.div`
     position: absolute;
@@ -139,7 +146,7 @@ const Down = styled.img`
     position: absolute;
     width: 50px;
     top: 70%;
-    animation: ${DownBlink} 2s 0s infinite linear;
+    animation: ${DownBlink} 2s 0s infinite linear alternate;
 `;
 const WrabBtn = styled.div`
     position: absolute;
@@ -168,8 +175,12 @@ const NextButton = styled.button`
     border: none;
     object-fit: cover;
 `;
-
-const WrabBurgerText = styled.div`
+const WrabPattyTexts = styled.div`
+    top: 30%;
+    position: absolute;
+    width: 100%;
+`;
+const WrabMainTexts = styled.div`
     position: absolute;
     display: flex;
     text-align: left;
@@ -178,13 +189,21 @@ const WrabBurgerText = styled.div`
     align-items: center;
     width: 80%;
 `;
-const BurgerText = styled.div`
-    margin-left: 20px;
-    font-size: ${(props) => (props.scroll > 100 ? "17em" : "9em")};
-    color: ${(props) => (props.scroll > 100 ? "rgba(0, 0, 0, 0.4)" : "black")};
-    filter: ${(props) => (props.scroll > 100 ? "blur(3px)" : "blur(0px)")};
+const MainText = styled.div`
+    margin-left: 50px;
+    font-size: 7em;
     font-weight: 900;
-    transition: 1s;
+    opacity: ${(props) => (props.scroll > 100 ? 0 : 1)};
+    transition: 0.3s;
+`;
+const PattyText = styled.div`
+    position: absolute;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 20vw;
+    font-weight: 900;
+    opacity: ${(props) => (props.scroll > 100 ? 1 : 0)};
+    transition: 0.3s;
 `;
 const WrabBurgerImg = styled.div`
     position: relative;
