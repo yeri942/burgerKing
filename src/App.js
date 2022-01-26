@@ -6,7 +6,20 @@ function App() {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
     const [pattyIndex, setPattyIndex] = useState(0);
     const patties = ["beef", "chicken"];
-
+    const clickPrevBtn = () => {
+        if (pattyIndex === 0) {
+            setPattyIndex(patties.length - 1);
+        } else {
+            setPattyIndex(pattyIndex - 1);
+        }
+    };
+    const clickNextBtn = () => {
+        if (pattyIndex === patties.length - 1) {
+            setPattyIndex(0);
+        } else {
+            setPattyIndex(pattyIndex + 1);
+        }
+    };
     const handleFollow = () => {
         setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
     };
@@ -34,8 +47,16 @@ function App() {
                     </WrabScroll>
                 ) : (
                     <WrabBtn>
-                        <PrevButton type="button"></PrevButton>
-                        <NextButton type="button"></NextButton>
+                        <PrevButton
+                            type="button"
+                            onClick={clickPrevBtn}
+                            imgName={patties[pattyIndex]}
+                        ></PrevButton>
+                        <NextButton
+                            type="button"
+                            onClick={clickNextBtn}
+                            imgName={patties[pattyIndex]}
+                        ></NextButton>
                     </WrabBtn>
                 )}
                 <WrabMainTexts>
@@ -46,7 +67,9 @@ function App() {
                     </div>
                 </WrabMainTexts>
                 <WrabPattyTexts>
-                    <PattyText scroll={ScrollY}>BEEF</PattyText>
+                    <PattyText scroll={ScrollY}>
+                        {patties[pattyIndex]}
+                    </PattyText>
                 </WrabPattyTexts>
                 <WrabBurgerImg>
                     <BurgerImg
@@ -93,8 +116,7 @@ function App() {
                     ></BurgerImg>
                     <BurgerImg
                         style={{
-                            background:
-                                "center / cover no-repeat url(./img/beef_patty.png)",
+                            background: `center / cover no-repeat url(./img/${patties[pattyIndex]}_patty.png)`,
                         }}
                         scroll={ScrollY}
                     ></BurgerImg>
@@ -204,6 +226,7 @@ const PattyText = styled.div`
     font-weight: 900;
     opacity: ${(props) => (props.scroll > 100 ? 1 : 0)};
     transition: 0.3s;
+    text-transform: uppercase;
 `;
 const WrabBurgerImg = styled.div`
     position: relative;
