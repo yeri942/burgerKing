@@ -1,6 +1,6 @@
 import "./App.css";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import react, { useState, useEffect } from "react";
 
 function App() {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
@@ -24,58 +24,82 @@ function App() {
     return (
         <WrabMain>
             <Wrab>
-                <WrabSquare>
-                    <Square
+                {ScrollY < 108 ? (
+                    <WrabScroll>
+                        <Mouse src="./img/mousescroll.png"></Mouse>
+                        <Down src="./img/down.png"></Down>
+                    </WrabScroll>
+                ) : (
+                    <WrabBtn>
+                        <PrevButton type="button"></PrevButton>
+                        <NextButton type="button"></NextButton>
+                    </WrabBtn>
+                )}
+
+                <WrabBurgerText>
+                    <div>
+                        <BurgerText scroll={ScrollY}>Beef</BurgerText>
+                        <BurgerText scroll={ScrollY}>Burger</BurgerText>
+                    </div>
+                </WrabBurgerText>
+                <WrabBurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/topburn.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/lettuce.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/onion.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/pickle.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/tomato.png)",
+                        }}
+                        scroll={ScrollY}
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/cheese.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/patty.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                    <Square
+                    ></BurgerImg>
+                    <BurgerImg
                         style={{
                             background:
                                 "center / cover no-repeat url(./img/bottomburn.png)",
                         }}
                         scroll={ScrollY}
-                    ></Square>
-                </WrabSquare>
-                <BurgerText>Beef Burger</BurgerText>
+                    ></BurgerImg>
+                </WrabBurgerImg>
             </Wrab>
         </WrabMain>
     );
@@ -90,50 +114,125 @@ const Wrab = styled.div`
     text-align: center;
     background-color: orange;
 `;
-const BurgerText = styled.div`
-    position: fixed;
-    z-index: 100;
+const WrabScroll = styled.div`
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    right: 15%;
 `;
-const WrabSquare = styled.div`
+const Mouse = styled.img`
+    position: absolute;
+    width: 100px;
+`;
+const DownBlink = keyframes`
+    0%{opacity:0}
+    33%{opacity:1}
+    66%{opacity:0}
+    100%{opacity:1}
+
+`;
+const Down = styled.img`
+    position: absolute;
+    width: 50px;
+    top: 70%;
+    animation: ${DownBlink} 2s 0s infinite linear;
+`;
+const WrabBtn = styled.div`
+    position: absolute;
+    display: flex;
+    z-index: 20;
+    height: 10%;
+    top: 62%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+`;
+const PrevButton = styled.button`
+    margin-right: 600px;
+    background: no-repeat url("./img/left.png");
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border: none;
+    object-fit: cover;
+`;
+const NextButton = styled.button`
+    width: 100px;
+    height: 100px;
+    background: no-repeat url("./img/right.png");
+    background-size: cover;
+    border: none;
+    object-fit: cover;
+`;
+
+const WrabBurgerText = styled.div`
+    position: absolute;
+    display: flex;
+    text-align: left;
+    z-index: 10;
+    height: 100%;
+    align-items: center;
+    width: 80%;
+`;
+const BurgerText = styled.div`
+    margin-left: 20px;
+    font-size: ${(props) => (props.scroll > 100 ? "17em" : "9em")};
+    color: ${(props) => (props.scroll > 100 ? "rgba(0, 0, 0, 0.4)" : "black")};
+    filter: ${(props) => (props.scroll > 100 ? "blur(3px)" : "blur(0px)")};
+    font-weight: 900;
+    transition: 1s;
+`;
+const WrabBurgerImg = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
-    // align-items: center;
     height: 100%;
 `;
-const Square = styled.div`
+const BurgerImg = styled.div`
     position: absolute;
     display: inline-block;
     height: 150px;
     width: 450px;
+    filter: ${(props) => (props.scroll > 100 ? "blur(2px)" : "blur(0px)")};
     transition: 1s;
     &:nth-child(1) {
-        top: ${(props) => (props.scroll > 100 ? "5%" : "30%")};
+        top: ${(props) => (props.scroll > 100 ? "5%" : "25%")};
         z-index: 100;
     }
     &:nth-child(2) {
-        top: ${(props) => (props.scroll > 100 ? "20%" : "40%")};
+        top: ${(props) => (props.scroll > 100 ? "18%" : "35%")};
         z-index: 90;
     }
     &:nth-child(3) {
-        top: ${(props) => (props.scroll > 100 ? "30%" : "45%")};
+        top: ${(props) => (props.scroll > 100 ? "25%" : "40%")};
         z-index: 80;
     }
     &:nth-child(4) {
-        top: ${(props) => (props.scroll > 100 ? "40%" : "48%")};
+        top: ${(props) => (props.scroll > 100 ? "30%" : "42%")};
         z-index: 70;
     }
     &:nth-child(5) {
-        top: ${(props) => (props.scroll > 100 ? "50%" : "50%")};
+        top: ${(props) => (props.scroll > 100 ? "35%" : "45%")};
         z-index: 60;
     }
     &:nth-child(6) {
-        top: ${(props) => (props.scroll > 100 ? "60%" : "52%")};
+        top: ${(props) => (props.scroll > 100 ? "45%" : "51%")};
         z-index: 50;
     }
     &:nth-child(7) {
-        top: ${(props) => (props.scroll > 100 ? "75%" : "60%")};
+        top: ${(props) => (props.scroll > 100 ? "58%" : "54%")};
+        transform: ${(props) =>
+            props.scroll > 100 ? "scale(1.3)" : "scale(1);"};
+        filter: blur(0px);
         z-index: 40;
+    }
+    &:nth-child(8) {
+        top: ${(props) => (props.scroll > 100 ? "75%" : "62%")};
+        z-index: 30;
     }
 `;
 export default App;
