@@ -1,11 +1,12 @@
 import "./App.css";
 import styled, { keyframes } from "styled-components";
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
     const [pattyIndex, setPattyIndex] = useState(0);
     const patties = ["beef", "chicken"];
+    const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)"];
     const clickPrevBtn = () => {
         if (pattyIndex === 0) {
             setPattyIndex(patties.length - 1);
@@ -39,7 +40,7 @@ function App() {
     });
     return (
         <WrabMain>
-            <Wrab scroll={ScrollY}>
+            <Wrab scroll={ScrollY} color={pattiesBackground[pattyIndex]}>
                 {ScrollY < 108 ? (
                     <WrabScroll>
                         <Mouse src="./img/mousescroll.png"></Mouse>
@@ -140,7 +141,8 @@ const Wrab = styled.div`
     width: 100%;
     height: 100vh;
     text-align: center;
-    background-color: ${(props) => (props.scroll > 100 ? "#A15800" : "orange")};
+    background-color: ${(props) =>
+        props.scroll > 100 ? props.color : "orange"};
     transition: 1s;
 `;
 const WrabScroll = styled.div`
