@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 function App() {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
     const [pattyIndex, setPattyIndex] = useState(0);
-    const patties = ["beef", "chicken"];
-    const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)"];
+    const patties = ["beef", "chicken", "shrimp"];
+    const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)", "red"];
     const clickPrevBtn = () => {
         if (pattyIndex === 0) {
             setPattyIndex(patties.length - 1);
@@ -47,19 +47,30 @@ function App() {
                         <Down src="./img/down.png"></Down>
                     </WrabScroll>
                 ) : (
-                    <WrabBtn>
-                        <PrevButton
-                            type="button"
-                            onClick={clickPrevBtn}
-                            imgName={patties[pattyIndex]}
-                        ></PrevButton>
-                        <NextButton
-                            type="button"
-                            onClick={clickNextBtn}
-                            imgName={patties[pattyIndex]}
-                        ></NextButton>
-                    </WrabBtn>
+                    <>
+                        <WrabBtn>
+                            <PrevButton
+                                type="button"
+                                onClick={clickPrevBtn}
+                                imgName={patties[pattyIndex]}
+                            ></PrevButton>
+                            <NextButton
+                                type="button"
+                                onClick={clickNextBtn}
+                                imgName={patties[pattyIndex]}
+                            ></NextButton>
+                        </WrabBtn>
+                        <GoButton>
+                            <GoText color={pattiesBackground[pattyIndex]}>
+                                Let's go find
+                            </GoText>
+                            <GoText color={pattiesBackground[pattyIndex]}>
+                                {patties[pattyIndex]} burgers
+                            </GoText>
+                        </GoButton>
+                    </>
                 )}
+
                 <WrabMainTexts>
                     <div>
                         <MainText scroll={ScrollY}>Choice</MainText>
@@ -72,6 +83,7 @@ function App() {
                         {patties[pattyIndex]}
                     </PattyText>
                 </WrabPattyTexts>
+
                 <WrabBurgerImg>
                     <BurgerImg
                         style={{
@@ -229,6 +241,38 @@ const PattyText = styled.div`
     opacity: ${(props) => (props.scroll > 100 ? 1 : 0)};
     transition: 0.3s;
     text-transform: uppercase;
+`;
+const RotateButton = keyframes`
+    0%{transform:rotate(0)}
+    33%{transform:rotate(4deg)}
+    66%{transform:rotate(2deg)}
+    100%{transform:rotate(0)}
+
+`;
+const GoButton = styled.div`
+    position: absolute;
+    right: 70px;
+    bottom: 70px;
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    border-radius: 50%;
+    // box-shadow: 10px 5px 0px red, -5px -15px 0px green;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    z-index: 300;
+    animation: ${RotateButton} 5s 0s infinite linear;
+`;
+
+const GoText = styled.span`
+    color: black;
+    font-size: 39px;
+    text-shadow: -5px -4px 0px ${(props) => props.color};
+    transform: skew(10deg, -25deg);
+    transition: 1s;
 `;
 const WrabBurgerImg = styled.div`
     position: relative;
