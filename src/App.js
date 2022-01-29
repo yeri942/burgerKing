@@ -17,10 +17,7 @@ const App = () => {
                                     className="transition"
                                 >
                                     <Routes>
-                                        <Route
-                                            element={<Main />}
-                                            path="/main"
-                                        />
+                                        <Route element={<Main />} path="/" />
                                     </Routes>
                                 </CSSTransition>
                             </TransitionGroup>
