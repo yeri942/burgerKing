@@ -68,6 +68,7 @@ function App() {
                                 {patties[pattyIndex]} burgers
                             </GoText>
                         </GoButton>
+                        <Cursor />
                     </>
                 )}
 
@@ -251,11 +252,12 @@ const RotateButton = keyframes`
 `;
 const GoButton = styled.div`
     position: absolute;
-    right: 70px;
+    right: 100px;
     bottom: 70px;
     width: 200px;
     height: 200px;
     background-color: orange;
+    background-size: cover;
     border-radius: 50%;
     // box-shadow: 10px 5px 0px red, -5px -15px 0px green;
     display: flex;
@@ -264,7 +266,11 @@ const GoButton = styled.div`
     align-content: center;
     justify-content: center;
     z-index: 300;
-    animation: ${RotateButton} 5s 0s infinite linear;
+    cursor: pointer;
+    transition: 1s;
+    &:hover {
+        transform: rotate(22deg);
+    }
 `;
 
 const GoText = styled.span`
@@ -272,8 +278,20 @@ const GoText = styled.span`
     font-size: 39px;
     text-shadow: -5px -4px 0px ${(props) => props.color};
     transform: skew(10deg, -25deg);
-    transition: 1s;
 `;
+
+const Cursor = styled.div`
+    position: absolute;
+    right: 50px;
+    bottom: 80px;
+    background-image: url("./img/cursor.png");
+    background-size: cover;
+    width: 57px;
+    height: 67.5px;
+    z-index: 400;
+    transform: rotate(-25deg);
+`;
+
 const WrabBurgerImg = styled.div`
     position: relative;
     display: flex;
