@@ -1,31 +1,17 @@
-import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./App.css";
-import Main from "./Main.jsx";
+import Main from "./page/Main";
+import Menu from "./page/Menu";
 
 const App = () => {
     return (
-        <BrowserRouter>
+        <Router>
             <Routes>
-                <Route
-                    render={({ location }) => {
-                        return (
-                            <TransitionGroup className="transition-group">
-                                <CSSTransition
-                                    key={location.pathname}
-                                    timeout={300}
-                                    className="transition"
-                                >
-                                    <Routes>
-                                        <Route element={<Main />} path="/" />
-                                    </Routes>
-                                </CSSTransition>
-                            </TransitionGroup>
-                        );
-                    }}
-                />
+                <Route element={<Main />} path="/main" />
+                <Route element={<Menu />} path="/menu" />
             </Routes>
-        </BrowserRouter>
+        </Router>
     );
 };
 

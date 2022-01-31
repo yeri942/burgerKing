@@ -1,4 +1,3 @@
-import "./App.css";
 import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
 
@@ -153,41 +152,58 @@ const BurgerImg = styled.div`
     display: inline-block;
     height: 150px;
     width: 450px;
-    filter: ${(props) => (props.scroll > 100 ? "blur(2px)" : "blur(0px)")};
+    filter: ${(props) =>
+        props.scroll > 100
+            ? props.go === true
+                ? "blur(0px)"
+                : "blur(2px)"
+            : "blur(0px)"};
     transition: 1s;
     &:nth-child(1) {
-        top: ${(props) => (props.scroll > 100 ? "5%" : "25%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "25%" : "5%") : "25%"};
         z-index: 100;
     }
     &:nth-child(2) {
-        top: ${(props) => (props.scroll > 100 ? "18%" : "35%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "35%" : "18%") : "35%"};
         z-index: 90;
     }
     &:nth-child(3) {
-        top: ${(props) => (props.scroll > 100 ? "25%" : "40%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "40%" : "25%") : "40%"};
         z-index: 80;
     }
     &:nth-child(4) {
-        top: ${(props) => (props.scroll > 100 ? "30%" : "42%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "42%" : "30%") : "42%"};
         z-index: 70;
     }
     &:nth-child(5) {
-        top: ${(props) => (props.scroll > 100 ? "35%" : "45%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "45%" : "35%") : "45%"};
         z-index: 60;
     }
     &:nth-child(6) {
-        top: ${(props) => (props.scroll > 100 ? "45%" : "51%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "51%" : "45%") : "51%"};
         z-index: 50;
     }
     &:nth-child(7) {
-        top: ${(props) => (props.scroll > 100 ? "58%" : "54%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "54%" : "58%") : "54%"};
         transform: ${(props) =>
-            props.scroll > 100 ? "scale(1.3)" : "scale(1);"};
+            props.scroll > 100
+                ? props.go === true
+                    ? "scale(1);"
+                    : "scale(1.3)"
+                : "scale(1);"};
         filter: blur(0px);
         z-index: 40;
     }
     &:nth-child(8) {
-        top: ${(props) => (props.scroll > 100 ? "75%" : "62%")};
+        top: ${(props) =>
+            props.scroll > 100 ? (props.go === true ? "62%" : "75%") : "62%"};
         z-index: 30;
     }
 `;
@@ -195,6 +211,7 @@ const BurgerImg = styled.div`
 const Main = () => {
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
     const [pattyIndex, setPattyIndex] = useState(0);
+    const [GobuttonState, setGobuttonState] = useState(false);
     const patties = ["beef", "chicken", "shrimp"];
     const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)", "red"];
     const clickPrevBtn = () => {
@@ -213,11 +230,17 @@ const Main = () => {
     };
     const handleFollow = () => {
         setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
+        if (ScrollY < 108) {
+            setGobuttonState(false);
+        }
     };
 
-    useEffect(() => {
-        console.log("ScrollY is ", ScrollY); // ScrollY가 변화할때마다 값을 콘솔에 출력
-    }, [ScrollY]);
+    const ClickGobutton = () => {
+        setGobuttonState(true);
+    };
+    // useEffect(() => {
+    //     console.log("ScrollY is ", ScrollY); // ScrollY가 변화할때마다 값을 콘솔에 출력
+    // }, [ScrollY]);
 
     useEffect(() => {
         const watch = () => {
@@ -236,7 +259,7 @@ const Main = () => {
                         <Mouse src="./img/mousescroll.png"></Mouse>
                         <Down src="./img/down.png"></Down>
                     </WrabScroll>
-                ) : (
+                ) : GobuttonState === false ? (
                     <>
                         <WrabBtn>
                             <PrevButton
@@ -250,7 +273,7 @@ const Main = () => {
                                 imgName={patties[pattyIndex]}
                             ></NextButton>
                         </WrabBtn>
-                        <GoButton>
+                        <GoButton onClick={ClickGobutton}>
                             <GoText color={pattiesBackground[pattyIndex]}>
                                 Let's go find
                             </GoText>
@@ -260,7 +283,7 @@ const Main = () => {
                         </GoButton>
                         <Cursor />
                     </>
-                )}
+                ) : null}
 
                 <WrabMainTexts>
                     <div>
@@ -282,6 +305,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/topburn.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -289,6 +313,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/lettuce.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -296,6 +321,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/onion.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -303,6 +329,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/pickle.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -310,6 +337,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/tomato.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -317,12 +345,14 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/cheese.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
                             background: `center / cover no-repeat url(./img/${patties[pattyIndex]}_patty.png)`,
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                     <BurgerImg
                         style={{
@@ -330,6 +360,7 @@ const Main = () => {
                                 "center / cover no-repeat url(./img/bottomburn.png)",
                         }}
                         scroll={ScrollY}
+                        go={GobuttonState}
                     ></BurgerImg>
                 </WrabBurgerImg>
             </Wrab>
