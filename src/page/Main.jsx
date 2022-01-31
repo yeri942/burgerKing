@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const WrabMain = styled.div`
     height: 150vh;
@@ -214,6 +215,15 @@ const Main = () => {
     const [GobuttonState, setGobuttonState] = useState(false);
     const patties = ["beef", "chicken", "shrimp"];
     const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)", "red"];
+    const navigate = useNavigate();
+
+    const ClickGobutton = (path) => {
+        setGobuttonState(true);
+        setTimeout(() => {
+            console.log("메뉴페이지로 갑니다앙");
+            navigate(path);
+        }, 1800);
+    };
     const clickPrevBtn = () => {
         if (pattyIndex === 0) {
             setPattyIndex(patties.length - 1);
@@ -235,9 +245,6 @@ const Main = () => {
         }
     };
 
-    const ClickGobutton = () => {
-        setGobuttonState(true);
-    };
     // useEffect(() => {
     //     console.log("ScrollY is ", ScrollY); // ScrollY가 변화할때마다 값을 콘솔에 출력
     // }, [ScrollY]);
@@ -247,6 +254,7 @@ const Main = () => {
             window.addEventListener("scroll", handleFollow);
         };
         watch(); // addEventListener 함수를 실행
+
         return () => {
             window.removeEventListener("scroll", handleFollow); // addEventListener 함수를 삭제
         };
@@ -273,7 +281,8 @@ const Main = () => {
                                 imgName={patties[pattyIndex]}
                             ></NextButton>
                         </WrabBtn>
-                        <GoButton onClick={ClickGobutton}>
+
+                        <GoButton onClick={() => ClickGobutton("/menu")}>
                             <GoText color={pattiesBackground[pattyIndex]}>
                                 Let's go find
                             </GoText>
@@ -281,6 +290,7 @@ const Main = () => {
                                 {patties[pattyIndex]} burgers
                             </GoText>
                         </GoButton>
+
                         <Cursor />
                     </>
                 ) : null}
