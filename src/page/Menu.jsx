@@ -7,6 +7,9 @@ const HeaderWrapper = styled.header`
     height: 12%;
     background-color: yellow;
 `;
+
+const PrevButton = styled.div``;
+const Kind = styled.span``;
 const ContentWrapper = styled.div`
     height: 80%;
     background-color: blue;
@@ -20,7 +23,15 @@ const FooterWrapper = styled.footer`
 const Menu = () => {
     return (
         <MenuPageWrapper>
-            <HeaderWrapper>Nav</HeaderWrapper>
+            <HeaderWrapper>
+                <PrevButton> 이전 </PrevButton>
+                <Kind>BEEF</Kind>
+                <span>
+                    <span>Premium</span>
+                    <span>Whopper</span>
+                    <span>Junior&Burger</span>
+                </span>
+            </HeaderWrapper>
             <ContentWrapper>Content</ContentWrapper>
             <FooterWrapper>footer</FooterWrapper>
         </MenuPageWrapper>

@@ -11,7 +11,7 @@ const Wrab = styled.div`
     height: 100vh;
     text-align: center;
     background-color: ${(props) =>
-        props.scroll > 100 ? props.color : "orange"};
+        props.scroll > 100 ? props.color : "#F4EBDC"};
     transition: 1s;
 `;
 const WrabScroll = styled.div`
@@ -86,6 +86,7 @@ const MainText = styled.div`
     margin-left: 50px;
     font-size: 7em;
     font-weight: 900;
+    color: #512314;
     opacity: ${(props) => (props.scroll > 100 ? 0 : 1)};
     transition: 0.3s;
 `;
@@ -125,9 +126,14 @@ const GoButton = styled.div`
 
 const GoText = styled.span`
     color: black;
-    font-size: 39px;
+    font-size: 40px;
     text-shadow: -5px -4px 0px ${(props) => props.color};
-    transform: skew(10deg, -25deg);
+    &:first-child {
+        transform: translate(-15px, 2px) skew(10deg, -25deg);
+    }
+    &:last-child {
+        transform: translate(15px) skew(10deg, -25deg);
+    }
 `;
 
 const Cursor = styled.div`
@@ -214,7 +220,7 @@ const Main = () => {
     const [pattyIndex, setPattyIndex] = useState(0);
     const [GobuttonState, setGobuttonState] = useState(false);
     const patties = ["beef", "chicken", "shrimp"];
-    const pattiesBackground = ["rgb(124, 68, 30)", "rgb(255, 102, 0)", "red"];
+    const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];
     const navigate = useNavigate();
 
     const ClickGobutton = (path) => {
@@ -284,7 +290,7 @@ const Main = () => {
 
                         <GoButton onClick={() => ClickGobutton("/menu")}>
                             <GoText color={pattiesBackground[pattyIndex]}>
-                                Let's go find
+                                Let's find
                             </GoText>
                             <GoText color={pattiesBackground[pattyIndex]}>
                                 {patties[pattyIndex]} burgers
