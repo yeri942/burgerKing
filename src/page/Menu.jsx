@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 const MenuPageWrapper = styled.div`
     height: 100vh;
@@ -8,7 +9,15 @@ const HeaderWrapper = styled.header`
     background-color: yellow;
 `;
 
-const PrevButton = styled.div``;
+const PrevButton = styled.button`
+    background: no-repeat url("./img/left.png");
+    background-size: cover;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    object-fit: cover;
+`;
 const Kind = styled.span``;
 const ContentWrapper = styled.div`
     height: 80%;
@@ -24,7 +33,10 @@ const Menu = () => {
     return (
         <MenuPageWrapper>
             <HeaderWrapper>
-                <PrevButton> 이전 </PrevButton>
+                <Link to="/main">
+                    <PrevButton />
+                </Link>
+
                 <Kind>BEEF</Kind>
                 <span>
                     <span>Premium</span>
