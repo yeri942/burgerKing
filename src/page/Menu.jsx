@@ -5,20 +5,36 @@ const MenuPageWrapper = styled.div`
     height: 100vh;
 `;
 const HeaderWrapper = styled.header`
+    display: flex;
+    align-items: center;
     height: 12%;
     background-color: yellow;
 `;
-
+const Nav = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+const NavZone = styled.span`
+    margin-right: 30px;
+    & > :not(:first-child) {
+        margin-left: 30px;
+    }
+`;
 const PrevButton = styled.button`
     background: no-repeat url("./img/left.png");
     background-size: cover;
     margin: 10px;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: none;
     object-fit: cover;
 `;
-const Kind = styled.span``;
+const Kind = styled.span`
+    margin-left: 30px;
+    font-size: 30px;
+`;
 const ContentWrapper = styled.div`
     height: 80%;
     background-color: blue;
@@ -36,13 +52,14 @@ const Menu = () => {
                 <Link to="/main">
                     <PrevButton />
                 </Link>
-
-                <Kind>BEEF</Kind>
-                <span>
-                    <span>Premium</span>
-                    <span>Whopper</span>
-                    <span>Junior&Burger</span>
-                </span>
+                <Nav>
+                    <Kind>BEEF BURGER</Kind>
+                    <NavZone>
+                        <span>Premium</span>
+                        <span>Whopper</span>
+                        <span>Junior&Burger</span>
+                    </NavZone>
+                </Nav>
             </HeaderWrapper>
             <ContentWrapper>Content</ContentWrapper>
             <FooterWrapper>footer</FooterWrapper>
