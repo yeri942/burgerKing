@@ -1,6 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { PattyIndex } from "./PattyIndexAtom";
 
 const WrabMain = styled.div`
     height: 150vh;
@@ -216,8 +218,9 @@ const BurgerImg = styled.div`
 `;
 
 const Main = () => {
+    const pattyIndex = useRecoilValue(PattyIndex);
+    const setPattyIndex = useSetRecoilState(PattyIndex);
     const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
-    const [pattyIndex, setPattyIndex] = useState(0);
     const [GobuttonState, setGobuttonState] = useState(false);
     const patties = ["beef", "chicken", "shrimp"];
     const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];

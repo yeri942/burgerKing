@@ -1,6 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { PattyIndex } from "./PattyIndexAtom";
+
 const MenuPageWrapper = styled.div`
     height: 100vh;
 `;
@@ -51,6 +53,8 @@ const FooterWrapper = styled.footer`
 `;
 
 const Menu = () => {
+    const pattyIndex = useRecoilValue(PattyIndex);
+    const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     return (
         <MenuPageWrapper>
             <HeaderWrapper>
@@ -58,7 +62,7 @@ const Menu = () => {
                     <PrevButton />
                 </Link>
                 <Nav>
-                    <Kind>BEEF BURGER</Kind>
+                    <Kind>{patties[pattyIndex]} BURGER</Kind>
                     <NavZone>
                         <li>Premium</li>
                         <li>Whopper</li>
