@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { PattyIndex } from "./PattyIndexAtom";
+import burgerData from "../burgerDB/data.json";
 
 const MenuPageWrapper = styled.div`
     height: 100vh;
@@ -47,11 +48,27 @@ const ContentWrapper = styled.div`
     background-color: blue;
 `;
 
+const BurgerBlock = styled.div``;
+
 const FooterWrapper = styled.footer`
     height: 8%;
     background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 900;
 `;
-
+const GitHub = styled.div`
+    width: 30px;
+    height: 30px;
+    background-image: url("./img/github.png");
+    background-size: cover;
+    opacity: 0.5;
+    cursor: pointer;
+`;
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
@@ -70,8 +87,27 @@ const Menu = () => {
                     </NavZone>
                 </Nav>
             </HeaderWrapper>
-            <ContentWrapper>Content</ContentWrapper>
-            <FooterWrapper>footer</FooterWrapper>
+            <ContentWrapper>
+                {burgerData.Beef.map((burgerKind) => {
+                    return (
+                        <BurgerBlock>
+                            {/* <span>{burgerKind.Premium}</span> */}
+                            {/* <span>{burger.Premium.price.burgerOnly}</span> */}
+                        </BurgerBlock>
+                    );
+                })}
+            </ContentWrapper>
+            <FooterWrapper>
+                <div>create by YeriKim</div>
+                <GitHub
+                    onClick={() =>
+                        window.open(
+                            "https://github.com/yeri942/burgerking",
+                            "_blank"
+                        )
+                    }
+                />
+            </FooterWrapper>
         </MenuPageWrapper>
     );
 };

@@ -4,75 +4,75 @@
             "Premium": [
                 {
                     "name": "콰트로치즈와퍼",
-                    "price": [
-                        { "burgerOnly": 7200 },
-                        { "smallSet": 9200 },
-                        { "largeSet": 9900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 7200,
+                        "smallSet": 9200,
+                        "largeSet": 9900
+                    }
                 },
                 {
                     "name": "할리피뇨와퍼",
-                    "price": [
-                        { "burgerOnly": 7200 },
-                        { "smallSet": 9200 },
-                        { "largeSet": 9900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 7200,
+                        "smallSet": 9200,
+                        "largeSet": 9900
+                    }
                 },
                 {
                     "name": "앵그리트러플와퍼",
-                    "price": [
-                        { "burgerOnly": 7200 },
-                        { "smallSet": 9200 },
-                        { "largeSet": 9900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 7200,
+                        "smallSet": 9200,
+                        "largeSet": 9900
+                    }
                 },
                 {
                     "name": "앵그리트러플X",
-                    "price": [
-                        { "burgerOnly": 8000 },
-                        { "smallSet": 10000 },
-                        { "largeSet": 10700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8000,
+                        "smallSet": 10000,
+                        "largeSet": 10700
+                    }
                 },
                 {
                     "name": "갈릭불고기와퍼",
-                    "price": [
-                        { "burgerOnly": 6800 },
-                        { "smallSet": 8800 },
-                        { "largeSet": 9500 }
-                    ]
+                    "price": {
+                        "burgerOnly": 6800,
+                        "smallSet": 8800,
+                        "largeSet": 9500
+                    }
                 },
                 {
                     "name": "콰트로치즈X",
-                    "price": [
-                        { "burgerOnly": 8000 },
-                        { "smallSet": 10000 },
-                        { "largeSet": 10700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8000,
+                        "smallSet": 10000,
+                        "largeSet": 10700
+                    }
                 },
                 {
                     "name": "기네스콰트로치즈와퍼",
-                    "price": [
-                        { "burgerOnly": 8800 },
-                        { "smallSet": 9800 },
-                        { "largeSet": 10500 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8800,
+                        "smallSet": 9800,
+                        "largeSet": 10500
+                    }
                 },
                 {
                     "name": "기네스머쉬룸와퍼",
-                    "price": [
-                        { "burgerOnly": 9200 },
-                        { "smallSet": 10200 },
-                        { "largeSet": 10900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 9200,
+                        "smallSet": 10200,
+                        "largeSet": 10900
+                    }
                 },
                 {
                     "name": "기네스와퍼",
-                    "price": [
-                        { "burgerOnly": 8800 },
-                        { "smallSet": 9800 },
-                        { "largeSet": 10500 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8800,
+                        "smallSet": 9800,
+                        "largeSet": 10500
+                    }
                 }
             ]
         },
@@ -80,59 +80,59 @@
             "Whopper": [
                 {
                     "name": "와퍼",
-                    "price": [
-                        { "burgerOnly": 6400 },
-                        { "smallSet": 8400 },
-                        { "largeSet": 9100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 6400,
+                        "smallSet": 8400,
+                        "largeSet": 9100
+                    }
                 },
                 {
                     "name": "스태커2와퍼",
-                    "price": [
-                        { "burgerOnly": 9000 },
-                        { "smallSet": 11000 },
-                        { "largeSet": 11700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 9000,
+                        "smallSet": 11000,
+                        "largeSet": 11700
+                    }
                 },
                 {
                     "name": "스태커3와퍼",
-                    "price": [
-                        { "burgerOnly": 11000 },
-                        { "smallSet": 13000 },
-                        { "largeSet": 13700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 11000,
+                        "smallSet": 13000,
+                        "largeSet": 13700
+                    }
                 },
                 {
                     "name": "스태커4와퍼",
-                    "price": [
-                        { "burgerOnly": 13000 },
-                        { "smallSet": 15000 },
-                        { "largeSet": 15700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 13000,
+                        "smallSet": 15000,
+                        "largeSet": 15700
+                    }
                 },
                 {
                     "name": "치즈와퍼",
-                    "price": [
-                        { "burgerOnly": 7000 },
-                        { "smallSet": 9000 },
-                        { "largeSet": 9700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 7000,
+                        "smallSet": 9000,
+                        "largeSet": 9700
+                    }
                 },
                 {
                     "name": "베이커치즈와퍼",
-                    "price": [
-                        { "burgerOnly": 8200 },
-                        { "smallSet": 9200 },
-                        { "largeSet": 9900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8200,
+                        "smallSet": 9200,
+                        "largeSet": 9900
+                    }
                 },
                 {
                     "name": "불고기와퍼",
-                    "price": [
-                        { "burgerOnly": 6400 },
-                        { "smallSet": 8400 },
-                        { "largeSet": 9100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 6400,
+                        "smallSet": 8400,
+                        "largeSet": 9100
+                    }
                 }
             ]
         },
@@ -140,59 +140,59 @@
             "JB": [
                 {
                     "name": "와퍼주니어",
-                    "price": [
-                        { "burgerOnly": 4400 },
-                        { "smallSet": 6400 },
-                        { "largeSet": 7100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4400,
+                        "smallSet": 6400,
+                        "largeSet": 7100
+                    }
                 },
                 {
                     "name": "치즈와퍼주니어",
-                    "price": [
-                        { "burgerOnly": 4700 },
-                        { "smallSet": 6700 },
-                        { "largeSet": 7400 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4700,
+                        "smallSet": 6700,
+                        "largeSet": 7400
+                    }
                 },
                 {
                     "name": "콰트로치즈와퍼주니어",
-                    "price": [
-                        { "burgerOnly": 5000 },
-                        { "smallSet": 7000 },
-                        { "largeSet": 7700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 5000,
+                        "smallSet": 7000,
+                        "largeSet": 7700
+                    }
                 },
                 {
                     "name": "불고기와퍼주니어",
-                    "price": [
-                        { "burgerOnly": 4400 },
-                        { "smallSet": 6400 },
-                        { "largeSet": 7100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4400,
+                        "smallSet": 6400,
+                        "largeSet": 7100
+                    }
                 },
                 {
                     "name": "직화소불고기버거",
-                    "price": [
-                        { "burgerOnly": 4200 },
-                        { "smallSet": 5200 },
-                        { "largeSet": 5900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4200,
+                        "smallSet": 5200,
+                        "largeSet": 5900
+                    }
                 },
                 {
                     "name": "직화버섯소불고기버거",
-                    "price": [
-                        { "burgerOnly": 4600 },
-                        { "smallSet": 5600 },
-                        { "largeSet": 6300 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4600,
+                        "smallSet": 5600,
+                        "largeSet": 6300
+                    }
                 },
                 {
                     "name": "치즈버거",
-                    "price": [
-                        { "burgerOnly": 3200 },
-                        { "smallSet": 5200 },
-                        { "largeSet": 5900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 3200,
+                        "smallSet": 5200,
+                        "largeSet": 5900
+                    }
                 }
             ]
         }
@@ -202,19 +202,19 @@
             "Premium": [
                 {
                     "name": "몬스터와퍼",
-                    "price": [
-                        { "burgerOnly": 8800 },
-                        { "smallSet": 9800 },
-                        { "largeSet": 10500 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8800,
+                        "smallSet": 9800,
+                        "largeSet": 10500
+                    }
                 },
                 {
                     "name": "몬스터X",
-                    "price": [
-                        { "burgerOnly": 9600 },
-                        { "smallSet": 10600 },
-                        { "largeSet": 11300 }
-                    ]
+                    "price": {
+                        "burgerOnly": 9600,
+                        "smallSet": 10600,
+                        "largeSet": 11300
+                    }
                 }
             ]
         },
@@ -223,27 +223,27 @@
             "JB": [
                 {
                     "name": "롱치킨버거",
-                    "price": [
-                        { "burgerOnly": 4400 },
-                        { "smallSet": 6400 },
-                        { "largeSet": 7100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4400,
+                        "smallSet": 6400,
+                        "largeSet": 7100
+                    }
                 },
                 {
                     "name": "바비큐킹치킨버거",
-                    "price": [
-                        { "burgerOnly": 3100 },
-                        { "smallSet": 4400 },
-                        { "largeSet": 5100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 3100,
+                        "smallSet": 4400,
+                        "largeSet": 5100
+                    }
                 },
                 {
                     "name": "킹치킨버거",
-                    "price": [
-                        { "burgerOnly": 3100 },
-                        { "smallSet": 4400 },
-                        { "largeSet": 5100 }
-                    ]
+                    "price": {
+                        "burgerOnly": 3100,
+                        "smallSet": 4400,
+                        "largeSet": 5100
+                    }
                 }
             ]
         }
@@ -253,19 +253,19 @@
             "Premium": [
                 {
                     "name": "통새우와퍼",
-                    "price": [
-                        { "burgerOnly": 7200 },
-                        { "smallSet": 9200 },
-                        { "largeSet": 9900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 7200,
+                        "smallSet": 9200,
+                        "largeSet": 9900
+                    }
                 },
                 {
                     "name": "통새우X",
-                    "price": [
-                        { "burgerOnly": 8000 },
-                        { "smallSet": 10000 },
-                        { "largeSet": 10700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 8000,
+                        "smallSet": 10000,
+                        "largeSet": 10700
+                    }
                 }
             ]
         },
@@ -274,35 +274,35 @@
             "JB": [
                 {
                     "name": "통새우와퍼주니어",
-                    "price": [
-                        { "burgerOnly": 5000 },
-                        { "smallSet": 7000 },
-                        { "largeSet": 7700 }
-                    ]
+                    "price": {
+                        "burgerOnly": 5000,
+                        "smallSet": 7000,
+                        "largeSet": 7700
+                    }
                 },
                 {
                     "name": "아기상어새우버거",
-                    "price": [
-                        { "burgerOnly": 4200 },
-                        { "smallSet": 5200 },
-                        { "largeSet": 5900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 4200,
+                        "smallSet": 5200,
+                        "largeSet": 5900
+                    }
                 },
                 {
                     "name": "엄마상어새우버거",
-                    "price": [
-                        { "burgerOnly": 5200 },
-                        { "smallSet": 6200 },
-                        { "largeSet": 6900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 5200,
+                        "smallSet": 6200,
+                        "largeSet": 6900
+                    }
                 },
                 {
                     "name": "아빠상어새우버거",
-                    "price": [
-                        { "burgerOnly": 6200 },
-                        { "smallSet": 7200 },
-                        { "largeSet": 7900 }
-                    ]
+                    "price": {
+                        "burgerOnly": 6200,
+                        "smallSet": 7200,
+                        "largeSet": 7900
+                    }
                 }
             ]
         }
