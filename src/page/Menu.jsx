@@ -6,21 +6,24 @@ import burgerData from "../burgerDB/data.json";
 
 const MenuPageWrapper = styled.div`
     height: 100vh;
+    background-color: #f4ebdc;
 `;
 const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     height: 12%;
-    background-color: yellow;
+    background-color: orange;
 `;
 const Nav = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #512314;
 `;
 const NavZone = styled.ul`
     margin-right: 30px;
+    color: #512314;
     & > :not(:first-child) {
         margin-left: 30px;
     }
@@ -28,6 +31,7 @@ const NavZone = styled.ul`
         list-style: none;
         float: left;
         cursor: pointer;
+        // color: ${(props) => (props.selected === 0 ? "white" : "red")};
     }
 `;
 const PrevButton = styled.button`
@@ -45,14 +49,13 @@ const Kind = styled.span`
 `;
 const ContentWrapper = styled.div`
     height: 80%;
-    background-color: blue;
 `;
 
 const BurgerBlock = styled.div``;
 
 const FooterWrapper = styled.footer`
     height: 8%;
-    background-color: yellow;
+    background-color: orange;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,6 +75,7 @@ const GitHub = styled.div`
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
+    // const d = burgerData.Beef
     return (
         <MenuPageWrapper>
             <HeaderWrapper>
@@ -80,7 +84,7 @@ const Menu = () => {
                 </Link>
                 <Nav>
                     <Kind>{patties[pattyIndex]} BURGER</Kind>
-                    <NavZone>
+                    <NavZone selected={pattyIndex}>
                         <li>Premium</li>
                         <li>Whopper</li>
                         <li>Junior&Burger</li>
@@ -89,8 +93,10 @@ const Menu = () => {
             </HeaderWrapper>
             <ContentWrapper>
                 {burgerData.Beef.map((burgerKind) => {
+                    console.log(burgerKind.Premium);
                     return (
                         <BurgerBlock>
+                            {burgerKind.price}sss
                             {/* <span>{burgerKind.Premium}</span> */}
                             {/* <span>{burger.Premium.price.burgerOnly}</span> */}
                         </BurgerBlock>
