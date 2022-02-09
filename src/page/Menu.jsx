@@ -48,10 +48,21 @@ const Kind = styled.span`
     font-size: 30px;
 `;
 const ContentWrapper = styled.div`
-    height: 80%;
+    height: auto;
+    padding: 20px;
 `;
 
-const BurgerBlock = styled.div``;
+const BurgerBlock = styled.div`
+    width: 200px;
+    height: 170px;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 50px;
+    margin: 0px 20px 0px 20px;
+    &:not(:first-child) {
+        margin: 20px 20px 0px 20px;
+    }
+`;
 
 const FooterWrapper = styled.footer`
     height: 8%;
@@ -96,7 +107,8 @@ const Menu = () => {
                     console.log(burgerKind.Premium);
                     return (
                         <BurgerBlock>
-                            {burgerKind.price}sss
+                            <div>버거 이미지</div>
+                            <div>버거 이름</div>
                             {/* <span>{burgerKind.Premium}</span> */}
                             {/* <span>{burger.Premium.price.burgerOnly}</span> */}
                         </BurgerBlock>
