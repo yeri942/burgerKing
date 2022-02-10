@@ -10,8 +10,11 @@ const MenuPageWrapper = styled.div`
 `;
 const HeaderWrapper = styled.header`
     display: flex;
+    position: absolute;
     align-items: center;
-    height: 12%;
+    height: 100px;
+    width: 100%;
+    top: 0;
     background-color: orange;
 `;
 const Nav = styled.div`
@@ -48,8 +51,10 @@ const Kind = styled.span`
     font-size: 30px;
 `;
 const ContentWrapper = styled.div`
-    height: auto;
-    padding: 20px;
+    padding: 100px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
 `;
 
 const BurgerBlock = styled.div`
@@ -58,22 +63,25 @@ const BurgerBlock = styled.div`
     background-color: red;
     border: 2px solid black;
     border-radius: 50px;
-    margin: 0px 20px 0px 20px;
-    &:not(:first-child) {
-        margin: 20px 20px 0px 20px;
-    }
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const FooterWrapper = styled.footer`
-    height: 8%;
+    width: 100%;
+    height: 65px;
     background-color: orange;
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
     font-family: sans-serif;
     font-size: 12px;
     font-weight: 900;
+    bottom: 0px;
 `;
 const GitHub = styled.div`
     width: 30px;
@@ -86,7 +94,7 @@ const GitHub = styled.div`
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
-    // const d = burgerData.Beef
+    console.log(burgerData.Beef[0].Premium);
     return (
         <MenuPageWrapper>
             <HeaderWrapper>
@@ -103,12 +111,13 @@ const Menu = () => {
                 </Nav>
             </HeaderWrapper>
             <ContentWrapper>
-                {burgerData.Beef.map((burgerKind) => {
-                    console.log(burgerKind.Premium);
+                {burgerData.Beef[0].Premium.map((burgerKind) => {
                     return (
                         <BurgerBlock>
-                            <div>버거 이미지</div>
-                            <div>버거 이름</div>
+                            <div>{burgerKind.name}</div>
+                            <div>{burgerKind.price.burgerOnly}</div>
+                            <div>{burgerKind.price.largeSet}</div>
+                            <div>{burgerKind.price.smallSet}</div>
                             {/* <span>{burgerKind.Premium}</span> */}
                             {/* <span>{burger.Premium.price.burgerOnly}</span> */}
                         </BurgerBlock>
