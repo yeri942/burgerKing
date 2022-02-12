@@ -53,20 +53,23 @@ const Kind = styled.span`
 const ContentWrapper = styled.div`
     padding: 100px 10px 10px 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
 `;
 
 const BurgerBlock = styled.div`
     width: 200px;
     height: 170px;
-    background-color: red;
-    border: 2px solid black;
-    border-radius: 50px;
     margin: 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+const Img = styled.img`
+    width: 200px;
+    height: 135px;
+    object-fit: cover;
 `;
 
 const FooterWrapper = styled.footer`
@@ -114,10 +117,16 @@ const Menu = () => {
                 {burgerData.Beef[0].Premium.map((burgerKind) => {
                     return (
                         <BurgerBlock>
+                            <Img
+                                src={`../img/burgerImg/${burgerKind.name}.png`}
+                            />
                             <div>{burgerKind.name}</div>
-                            <div>{burgerKind.price.burgerOnly}</div>
-                            <div>{burgerKind.price.largeSet}</div>
-                            <div>{burgerKind.price.smallSet}</div>
+                            {/* <div>
+                                <div>{burgerKind.price.burgerOnly}</div>
+                                <div>{burgerKind.price.largeSet}</div>
+                                <div>{burgerKind.price.smallSet}</div>
+                            </div> */}
+
                             {/* <span>{burgerKind.Premium}</span> */}
                             {/* <span>{burger.Premium.price.burgerOnly}</span> */}
                         </BurgerBlock>
