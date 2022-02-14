@@ -4,6 +4,62 @@ import { useRecoilValue } from "recoil";
 import { PattyIndex } from "./PattyIndexAtom";
 import burgerData from "../burgerDB/data.json";
 
+const Menu = () => {
+    const pattyIndex = useRecoilValue(PattyIndex);
+    const patties = ["BEEF", "CHICKEN", "SHRIMP"];
+    console.log(burgerData.Beef[0].Premium);
+    return (
+        <MenuPageWrapper>
+            <HeaderWrapper>
+                <Link to="/main">
+                    <PrevButton />
+                </Link>
+                <Nav>
+                    <Kind>{patties[pattyIndex]} BURGER</Kind>
+                    <NavZone selected={pattyIndex}>
+                        <li>Premium</li>
+                        <li>Whopper</li>
+                        <li>Junior&Burger</li>
+                    </NavZone>
+                </Nav>
+            </HeaderWrapper>
+            <ContentWrapper>
+                {burgerData.Beef[0].Premium.map((burgerKind) => {
+                    return (
+                        <BurgerBlock>
+                            <Img
+                                src={`../img/burgerImg/${burgerKind.name}.png`}
+                            />
+                            <div>{burgerKind.name}</div>
+                            {/* <div>
+                                <div>{burgerKind.price.burgerOnly}</div>
+                                <div>{burgerKind.price.largeSet}</div>
+                                <div>{burgerKind.price.smallSet}</div>
+                            </div> */}
+
+                            {/* <span>{burgerKind.Premium}</span> */}
+                            {/* <span>{burger.Premium.price.burgerOnly}</span> */}
+                        </BurgerBlock>
+                    );
+                })}
+            </ContentWrapper>
+            <FooterWrapper>
+                <div>create by YeriKim</div>
+                <GitHub
+                    onClick={() =>
+                        window.open(
+                            "https://github.com/yeri942/burgerking",
+                            "_blank"
+                        )
+                    }
+                />
+            </FooterWrapper>
+        </MenuPageWrapper>
+    );
+};
+
+export default Menu;
+
 const MenuPageWrapper = styled.div`
     height: 100vh;
     background-color: #f4ebdc;
@@ -68,7 +124,7 @@ const BurgerBlock = styled.div`
 
 const Img = styled.img`
     width: 200px;
-    height: 135px;
+    height: 150px;
     object-fit: cover;
 `;
 
@@ -94,58 +150,3 @@ const GitHub = styled.div`
     opacity: 0.5;
     cursor: pointer;
 `;
-const Menu = () => {
-    const pattyIndex = useRecoilValue(PattyIndex);
-    const patties = ["BEEF", "CHICKEN", "SHRIMP"];
-    console.log(burgerData.Beef[0].Premium);
-    return (
-        <MenuPageWrapper>
-            <HeaderWrapper>
-                <Link to="/main">
-                    <PrevButton />
-                </Link>
-                <Nav>
-                    <Kind>{patties[pattyIndex]} BURGER</Kind>
-                    <NavZone selected={pattyIndex}>
-                        <li>Premium</li>
-                        <li>Whopper</li>
-                        <li>Junior&Burger</li>
-                    </NavZone>
-                </Nav>
-            </HeaderWrapper>
-            <ContentWrapper>
-                {burgerData.Beef[0].Premium.map((burgerKind) => {
-                    return (
-                        <BurgerBlock>
-                            <Img
-                                src={`../img/burgerImg/${burgerKind.name}.png`}
-                            />
-                            <div>{burgerKind.name}</div>
-                            {/* <div>
-                                <div>{burgerKind.price.burgerOnly}</div>
-                                <div>{burgerKind.price.largeSet}</div>
-                                <div>{burgerKind.price.smallSet}</div>
-                            </div> */}
-
-                            {/* <span>{burgerKind.Premium}</span> */}
-                            {/* <span>{burger.Premium.price.burgerOnly}</span> */}
-                        </BurgerBlock>
-                    );
-                })}
-            </ContentWrapper>
-            <FooterWrapper>
-                <div>create by YeriKim</div>
-                <GitHub
-                    onClick={() =>
-                        window.open(
-                            "https://github.com/yeri942/burgerking",
-                            "_blank"
-                        )
-                    }
-                />
-            </FooterWrapper>
-        </MenuPageWrapper>
-    );
-};
-
-export default Menu;

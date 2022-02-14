@@ -4,6 +4,178 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { PattyIndex } from "./PattyIndexAtom";
 
+const Main = () => {
+    const pattyIndex = useRecoilValue(PattyIndex);
+    const setPattyIndex = useSetRecoilState(PattyIndex);
+    const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
+    const [GobuttonState, setGobuttonState] = useState(false);
+    const patties = ["beef", "chicken", "shrimp"];
+    const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];
+    const navigate = useNavigate();
+
+    const ClickGobutton = (path) => {
+        setGobuttonState(true);
+        setTimeout(() => {
+            console.log("메뉴페이지로 갑니다앙");
+            navigate(path);
+        }, 1800);
+    };
+    const clickPrevBtn = () => {
+        if (pattyIndex === 0) {
+            setPattyIndex(patties.length - 1);
+        } else {
+            setPattyIndex(pattyIndex - 1);
+        }
+    };
+    const clickNextBtn = () => {
+        if (pattyIndex === patties.length - 1) {
+            setPattyIndex(0);
+        } else {
+            setPattyIndex(pattyIndex + 1);
+        }
+    };
+    const handleFollow = () => {
+        setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
+        if (ScrollY < 108) {
+            setGobuttonState(false);
+        }
+    };
+
+    // useEffect(() => {
+    //     console.log("ScrollY is ", ScrollY); // ScrollY가 변화할때마다 값을 콘솔에 출력
+    // }, [ScrollY]);
+
+    useEffect(() => {
+        const watch = () => {
+            window.addEventListener("scroll", handleFollow);
+        };
+        watch(); // addEventListener 함수를 실행
+
+        return () => {
+            window.removeEventListener("scroll", handleFollow); // addEventListener 함수를 삭제
+        };
+    });
+    return (
+        <WrabMain>
+            <Wrab scroll={ScrollY} color={pattiesBackground[pattyIndex]}>
+                {ScrollY < 108 ? (
+                    <WrabScroll>
+                        <Mouse src="./img/mousescroll.png"></Mouse>
+                        <Down src="./img/down.png"></Down>
+                    </WrabScroll>
+                ) : GobuttonState === false ? (
+                    <>
+                        <WrabBtn>
+                            <PrevButton
+                                type="button"
+                                onClick={clickPrevBtn}
+                                imgName={patties[pattyIndex]}
+                            ></PrevButton>
+                            <NextButton
+                                type="button"
+                                onClick={clickNextBtn}
+                                imgName={patties[pattyIndex]}
+                            ></NextButton>
+                        </WrabBtn>
+
+                        <GoButton onClick={() => ClickGobutton("/menu")}>
+                            <GoText color={pattiesBackground[pattyIndex]}>
+                                Let's find
+                            </GoText>
+                            <GoText color={pattiesBackground[pattyIndex]}>
+                                {patties[pattyIndex]} burgers
+                            </GoText>
+                        </GoButton>
+
+                        <Cursor />
+                    </>
+                ) : null}
+
+                <WrabMainTexts>
+                    <div>
+                        <MainText scroll={ScrollY}>Choice</MainText>
+                        <MainText scroll={ScrollY}>Your</MainText>
+                        <MainText scroll={ScrollY}>Burger</MainText>
+                    </div>
+                </WrabMainTexts>
+                <WrabPattyTexts>
+                    <PattyText scroll={ScrollY}>
+                        {patties[pattyIndex]}
+                    </PattyText>
+                </WrabPattyTexts>
+
+                <WrabBurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/topburn.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/lettuce.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/onion.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/pickle.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/tomato.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/cheese.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background: `center / cover no-repeat url(./img/${patties[pattyIndex]}_patty.png)`,
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                    <BurgerImg
+                        style={{
+                            background:
+                                "center / cover no-repeat url(./img/bottomburn.png)",
+                        }}
+                        scroll={ScrollY}
+                        go={GobuttonState}
+                    ></BurgerImg>
+                </WrabBurgerImg>
+            </Wrab>
+        </WrabMain>
+    );
+};
+
+export default Main;
+
 const WrabMain = styled.div`
     height: 150vh;
 `;
@@ -216,175 +388,3 @@ const BurgerImg = styled.div`
         z-index: 30;
     }
 `;
-
-const Main = () => {
-    const pattyIndex = useRecoilValue(PattyIndex);
-    const setPattyIndex = useSetRecoilState(PattyIndex);
-    const [ScrollY, setScrollY] = useState(0); // 스크롤값을 저장하기 위한 상태
-    const [GobuttonState, setGobuttonState] = useState(false);
-    const patties = ["beef", "chicken", "shrimp"];
-    const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];
-    const navigate = useNavigate();
-
-    const ClickGobutton = (path) => {
-        setGobuttonState(true);
-        setTimeout(() => {
-            console.log("메뉴페이지로 갑니다앙");
-            navigate(path);
-        }, 1800);
-    };
-    const clickPrevBtn = () => {
-        if (pattyIndex === 0) {
-            setPattyIndex(patties.length - 1);
-        } else {
-            setPattyIndex(pattyIndex - 1);
-        }
-    };
-    const clickNextBtn = () => {
-        if (pattyIndex === patties.length - 1) {
-            setPattyIndex(0);
-        } else {
-            setPattyIndex(pattyIndex + 1);
-        }
-    };
-    const handleFollow = () => {
-        setScrollY(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
-        if (ScrollY < 108) {
-            setGobuttonState(false);
-        }
-    };
-
-    // useEffect(() => {
-    //     console.log("ScrollY is ", ScrollY); // ScrollY가 변화할때마다 값을 콘솔에 출력
-    // }, [ScrollY]);
-
-    useEffect(() => {
-        const watch = () => {
-            window.addEventListener("scroll", handleFollow);
-        };
-        watch(); // addEventListener 함수를 실행
-
-        return () => {
-            window.removeEventListener("scroll", handleFollow); // addEventListener 함수를 삭제
-        };
-    });
-    return (
-        <WrabMain>
-            <Wrab scroll={ScrollY} color={pattiesBackground[pattyIndex]}>
-                {ScrollY < 108 ? (
-                    <WrabScroll>
-                        <Mouse src="./img/mousescroll.png"></Mouse>
-                        <Down src="./img/down.png"></Down>
-                    </WrabScroll>
-                ) : GobuttonState === false ? (
-                    <>
-                        <WrabBtn>
-                            <PrevButton
-                                type="button"
-                                onClick={clickPrevBtn}
-                                imgName={patties[pattyIndex]}
-                            ></PrevButton>
-                            <NextButton
-                                type="button"
-                                onClick={clickNextBtn}
-                                imgName={patties[pattyIndex]}
-                            ></NextButton>
-                        </WrabBtn>
-
-                        <GoButton onClick={() => ClickGobutton("/menu")}>
-                            <GoText color={pattiesBackground[pattyIndex]}>
-                                Let's find
-                            </GoText>
-                            <GoText color={pattiesBackground[pattyIndex]}>
-                                {patties[pattyIndex]} burgers
-                            </GoText>
-                        </GoButton>
-
-                        <Cursor />
-                    </>
-                ) : null}
-
-                <WrabMainTexts>
-                    <div>
-                        <MainText scroll={ScrollY}>Choice</MainText>
-                        <MainText scroll={ScrollY}>Your</MainText>
-                        <MainText scroll={ScrollY}>Burger</MainText>
-                    </div>
-                </WrabMainTexts>
-                <WrabPattyTexts>
-                    <PattyText scroll={ScrollY}>
-                        {patties[pattyIndex]}
-                    </PattyText>
-                </WrabPattyTexts>
-
-                <WrabBurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/topburn.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/lettuce.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/onion.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/pickle.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/tomato.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/cheese.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background: `center / cover no-repeat url(./img/${patties[pattyIndex]}_patty.png)`,
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                    <BurgerImg
-                        style={{
-                            background:
-                                "center / cover no-repeat url(./img/bottomburn.png)",
-                        }}
-                        scroll={ScrollY}
-                        go={GobuttonState}
-                    ></BurgerImg>
-                </WrabBurgerImg>
-            </Wrab>
-        </WrabMain>
-    );
-};
-
-export default Main;
