@@ -3,11 +3,44 @@ import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { PattyIndex } from "./PattyIndexAtom";
 import burgerData from "../burgerDB/data.json";
+import { useEffect, useState } from "react";
 
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
-    console.log(burgerData.Beef[0].Premium);
+    const [navState, setNavState] = useState("premium");
+    const [contentsList, setContentsList] = useState("");
+
+    const changeNavState = (e) => {
+        setNavState(e.target.id);
+    };
+    useEffect(() => {
+        if (patties[pattyIndex] === "BEEF") {
+            if (navState === "premium") {
+                setContentsList(burgerData.Beef.Premium);
+            } else if (navState === "whopper") {
+                setContentsList(burgerData.Beef.Whopper);
+            } else if (navState === "jnb") {
+                setContentsList(burgerData.Beef.JB);
+            }
+        } else if (patties[pattyIndex] === "CHICKEN") {
+            if (navState === "premium") {
+                setContentsList(burgerData.Chicken.Premium);
+            } else if (navState === "whopper") {
+                setContentsList([]);
+            } else if (navState === "jnb") {
+                setContentsList(burgerData.Chicken.JB);
+            }
+        } else if (patties[pattyIndex] === "SHRIMP") {
+            if (navState === "premium") {
+                setContentsList(burgerData.Shrimp.Premium);
+            } else if (navState === "whopper") {
+                setContentsList([]);
+            } else if (navState === "jnb") {
+                setContentsList(burgerData.Shrimp.JB);
+            }
+        }
+    });
     return (
         <MenuPageWrapper>
             <HeaderWrapper>
@@ -16,32 +49,39 @@ const Menu = () => {
                 </Link>
                 <Nav>
                     <Kind>{patties[pattyIndex]} BURGER</Kind>
-                    <NavZone selected={pattyIndex}>
-                        <li>Premium</li>
-                        <li>Whopper</li>
-                        <li>Junior&Burger</li>
+                    <NavZone>
+                        <li id="premium" onClick={changeNavState}>
+                            Premium
+                        </li>
+                        <li id="whopper" onClick={changeNavState}>
+                            Whopper
+                        </li>
+                        <li id="jnb" onClick={changeNavState}>
+                            Junior&Burger
+                        </li>
                     </NavZone>
                 </Nav>
             </HeaderWrapper>
             <ContentWrapper>
-                {burgerData.Beef[0].Premium.map((burgerKind) => {
-                    return (
-                        <BurgerBlock>
-                            <Img
-                                src={`../img/burgerImg/${burgerKind.name}.png`}
-                            />
-                            <div>{burgerKind.name}</div>
-                            {/* <div>
+                {contentsList &&
+                    contentsList.map((burgerKind) => {
+                        return (
+                            <BurgerBlock>
+                                <Img
+                                    src={`../img/burgerImg/${burgerKind.name}.png`}
+                                />
+                                <div>{burgerKind.name}</div>
+                                {/* <div>
                                 <div>{burgerKind.price.burgerOnly}</div>
                                 <div>{burgerKind.price.largeSet}</div>
                                 <div>{burgerKind.price.smallSet}</div>
                             </div> */}
 
-                            {/* <span>{burgerKind.Premium}</span> */}
-                            {/* <span>{burger.Premium.price.burgerOnly}</span> */}
-                        </BurgerBlock>
-                    );
-                })}
+                                {/* <span>{burgerKind.Premium}</span> */}
+                                {/* <span>{burger.Premium.price.burgerOnly}</span> */}
+                            </BurgerBlock>
+                        );
+                    })}
             </ContentWrapper>
             <FooterWrapper>
                 <div>create by YeriKim</div>
