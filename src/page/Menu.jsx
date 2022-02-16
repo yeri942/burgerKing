@@ -70,7 +70,9 @@ const Menu = () => {
                                 <Img
                                     src={`../img/burgerImg/${burgerKind.name}.png`}
                                 />
-                                <div>{burgerKind.name}</div>
+                                <div>
+                                    <b>{burgerKind.name}</b>
+                                </div>
                                 {/* <div>
                                 <div>{burgerKind.price.burgerOnly}</div>
                                 <div>{burgerKind.price.largeSet}</div>
