@@ -10,6 +10,7 @@ const Menu = () => {
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     const [navState, setNavState] = useState("premium");
     const [contentsList, setContentsList] = useState("");
+    const [aboutBurger, setAboutBurger] = useState(false);
 
     const changeNavState = (e) => {
         setNavState(e.target.id);
@@ -66,7 +67,7 @@ const Menu = () => {
                 {contentsList &&
                     contentsList.map((burgerKind) => {
                         return (
-                            <BurgerBlock>
+                            <BurgerBlock onClick={() => setAboutBurger(true)}>
                                 <Img
                                     src={`../img/burgerImg/${burgerKind.name}.png`}
                                 />
@@ -84,6 +85,7 @@ const Menu = () => {
                             </BurgerBlock>
                         );
                     })}
+                {aboutBurger && <Detail>ss</Detail>}
             </ContentWrapper>
             <FooterWrapper>
                 <div>create by YeriKim</div>
@@ -149,7 +151,7 @@ const Kind = styled.span`
     font-size: 30px;
 `;
 const ContentWrapper = styled.div`
-    padding: 100px 10px 10px 10px;
+    padding: 170px 10px 10px 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
@@ -162,6 +164,7 @@ const BurgerBlock = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 `;
 
 const Img = styled.img`
@@ -169,7 +172,7 @@ const Img = styled.img`
     height: 150px;
     object-fit: cover;
 `;
-
+const Detail = styled.div``;
 const FooterWrapper = styled.footer`
     width: 100%;
     height: 65px;
