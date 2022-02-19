@@ -10,7 +10,14 @@ const Menu = () => {
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     const [navState, setNavState] = useState("premium");
     const [contentsList, setContentsList] = useState("");
-    const [aboutBurger, setAboutBurger] = useState(false);
+    const [aboutBurger, setAboutBurger] = useState({
+        name: "",
+        price: {
+            burgerOnly: 0,
+            largeSet: 0,
+            smallSet: 0,
+        },
+    });
 
     const changeNavState = (e) => {
         setNavState(e.target.id);
@@ -64,28 +71,49 @@ const Menu = () => {
                 </Nav>
             </HeaderWrapper>
             <ContentWrapper>
-                {contentsList &&
-                    contentsList.map((burgerKind) => {
-                        return (
-                            <BurgerBlock onClick={() => setAboutBurger(true)}>
-                                <Img
-                                    src={`../img/burgerImg/${burgerKind.name}.png`}
-                                />
-                                <div>
-                                    <b>{burgerKind.name}</b>
-                                </div>
-                                {/* <div>
-                                <div>{burgerKind.price.burgerOnly}</div>
-                                <div>{burgerKind.price.largeSet}</div>
-                                <div>{burgerKind.price.smallSet}</div>
-                            </div> */}
-
-                                {/* <span>{burgerKind.Premium}</span> */}
-                                {/* <span>{burger.Premium.price.burgerOnly}</span> */}
-                            </BurgerBlock>
-                        );
-                    })}
-                {aboutBurger && <Detail>ss</Detail>}
+                <BurgerWapper>
+                    {contentsList &&
+                        contentsList.map((burgerKind) => {
+                            return (
+                                <BurgerBlock
+                                    onClick={() =>
+                                        setAboutBurger({
+                                            name: burgerKind.name,
+                                            price: {
+                                                burgerOnly:
+                                                    burgerKind.price.burgerOnly,
+                                                largeSet:
+                                                    burgerKind.price.largeSet,
+                                                smallSet:
+                                                    burgerKind.price.smallSet,
+                                            },
+                                        })
+                                    }
+                                >
+                                    <Img
+                                        src={`../img/burgerImg/${burgerKind.name}.png`}
+                                    />
+                                    <div>
+                                        <b>{burgerKind.name}</b>
+                                    </div>
+                                </BurgerBlock>
+                            );
+                        })}
+                </BurgerWapper>
+                {aboutBurger.name === "" ? null : (
+                    <Detail>
+                        <DetailImg
+                            src={`../img/burgerImg/${aboutBurger.name}.png`}
+                        />
+                        {aboutBurger.name}
+                        <div>버거 단품</div>
+                        <div>{aboutBurger.price.burgerOnly}</div>
+                        <div>Small Set</div>
+                        <div>{aboutBurger.price.smallSet}</div>
+                        <div>Large Set</div>
+                        <div>{aboutBurger.price.largeSet}</div>
+                    </Detail>
+                )}
             </ContentWrapper>
             <FooterWrapper>
                 <div>create by YeriKim</div>
@@ -105,8 +133,7 @@ const Menu = () => {
 export default Menu;
 
 const MenuPageWrapper = styled.div`
-    height: 100vh;
-    background-color: #f4ebdc;
+    height: 77.7vh;
 `;
 const HeaderWrapper = styled.header`
     display: flex;
@@ -151,16 +178,25 @@ const Kind = styled.span`
     font-size: 30px;
 `;
 const ContentWrapper = styled.div`
-    padding: 170px 10px 10px 10px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f4ebdc;
+`;
+const BurgerWapper = styled.div`
+    color: black;
+    padding: 20px 10px 10px 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
 `;
-
 const BurgerBlock = styled.div`
     width: 200px;
     height: 170px;
-    margin: 10px 20px;
+    margin: 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,7 +208,21 @@ const Img = styled.img`
     height: 150px;
     object-fit: cover;
 `;
-const Detail = styled.div``;
+const Detail = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    width: 500px;
+    height: 100%;
+`;
+
+const DetailImg = styled.img`
+    width: 350px;
+    object-fit: cover;
+`;
 const FooterWrapper = styled.footer`
     width: 100%;
     height: 65px;
@@ -185,7 +235,7 @@ const FooterWrapper = styled.footer`
     font-family: sans-serif;
     font-size: 12px;
     font-weight: 900;
-    bottom: 0px;
+    // bottom: 0px;
 `;
 const GitHub = styled.div`
     width: 30px;
