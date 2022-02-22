@@ -1,14 +1,15 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { PattyIndex } from "./PattyIndexAtom";
+import { PattyIndex, NavState } from "../state/atoms";
 import burgerData from "../burgerDB/data.json";
 import { useEffect, useState } from "react";
+import Header from "../components/menuPage/Header.jsx";
 
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
-    const [navState, setNavState] = useState("premium");
+    const navState = useRecoilValue(NavState);
     const [contentsList, setContentsList] = useState("");
     const [aboutBurger, setAboutBurger] = useState({
         name: "",
@@ -19,9 +20,6 @@ const Menu = () => {
         },
     });
 
-    const changeNavState = (e) => {
-        setNavState(e.target.id);
-    };
     useEffect(() => {
         if (patties[pattyIndex] === "BEEF") {
             if (navState === "premium") {
@@ -51,25 +49,7 @@ const Menu = () => {
     });
     return (
         <MenuPageWrapper>
-            <HeaderWrapper>
-                <Link to="/main">
-                    <PrevButton />
-                </Link>
-                <Nav>
-                    <Kind>{patties[pattyIndex]} BURGER</Kind>
-                    <NavZone>
-                        <li id="premium" onClick={changeNavState}>
-                            Premium
-                        </li>
-                        <li id="whopper" onClick={changeNavState}>
-                            Whopper
-                        </li>
-                        <li id="jnb" onClick={changeNavState}>
-                            Junior&Burger
-                        </li>
-                    </NavZone>
-                </Nav>
-            </HeaderWrapper>
+            <Header />
             <ContentWrapper>
                 <BurgerWapper>
                     {contentsList &&
@@ -135,48 +115,7 @@ export default Menu;
 const MenuPageWrapper = styled.div`
     height: 77.7vh;
 `;
-const HeaderWrapper = styled.header`
-    display: flex;
-    position: absolute;
-    align-items: center;
-    height: 100px;
-    width: 100%;
-    top: 0;
-    background-color: orange;
-`;
-const Nav = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #512314;
-`;
-const NavZone = styled.ul`
-    margin-right: 30px;
-    color: #512314;
-    & > :not(:first-child) {
-        margin-left: 30px;
-    }
-    & > li {
-        list-style: none;
-        float: left;
-        cursor: pointer;
-        // color: ${(props) => (props.selected === 0 ? "white" : "red")};
-    }
-`;
-const PrevButton = styled.button`
-    background: no-repeat url("./img/left.png");
-    background-size: cover;
-    margin: 10px;
-    width: 20px;
-    height: 20px;
-    border: none;
-    object-fit: cover;
-`;
-const Kind = styled.span`
-    margin-left: 30px;
-    font-size: 30px;
-`;
+
 const ContentWrapper = styled.div`
     margin-top: 100px;
     display: flex;

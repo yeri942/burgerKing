@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { PattyIndex } from "./PattyIndexAtom";
+import { PattyIndex } from "../state/atoms";
 
 const Main = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
