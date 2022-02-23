@@ -5,6 +5,7 @@ import { PattyIndex, NavState } from "../state/atoms";
 import burgerData from "../burgerDB/data.json";
 import { useEffect, useState } from "react";
 import Header from "../components/menuPage/Header.jsx";
+import Footer from "../components/menuPage/Footer.jsx";
 
 const Menu = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
@@ -95,17 +96,7 @@ const Menu = () => {
                     </Detail>
                 )}
             </ContentWrapper>
-            <FooterWrapper>
-                <div>create by YeriKim</div>
-                <GitHub
-                    onClick={() =>
-                        window.open(
-                            "https://github.com/yeri942/burgerking",
-                            "_blank"
-                        )
-                    }
-                />
-            </FooterWrapper>
+            <Footer />
         </MenuPageWrapper>
     );
 };
@@ -161,26 +152,4 @@ const Detail = styled.div`
 const DetailImg = styled.img`
     width: 350px;
     object-fit: cover;
-`;
-const FooterWrapper = styled.footer`
-    width: 100%;
-    height: 65px;
-    background-color: orange;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    font-family: sans-serif;
-    font-size: 12px;
-    font-weight: 900;
-    // bottom: 0px;
-`;
-const GitHub = styled.div`
-    width: 30px;
-    height: 30px;
-    background-image: url("./img/github.png");
-    background-size: cover;
-    opacity: 0.5;
-    cursor: pointer;
 `;
