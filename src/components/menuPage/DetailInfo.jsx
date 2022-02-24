@@ -1,12 +1,23 @@
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { AboutBurger } from "../../state/atoms";
 
 const DetailInfo = () => {
     const aboutBurger = useRecoilValue(AboutBurger);
-
+    const setAboutBurger = useSetRecoilState(AboutBurger);
+    const CloseDetailInfo = () => {
+        setAboutBurger({
+            name: "",
+            price: {
+                burgerOnly: 0,
+                largeSet: 0,
+                smallSet: 0,
+            },
+        });
+    };
     return (
         <Detail>
+            <CloseButton onClick={CloseDetailInfo}>X</CloseButton>
             <DetailImg src={`../img/burgerImg/${aboutBurger.name}.png`} />
             {aboutBurger.name}
             <div>버거 단품</div>
@@ -29,8 +40,18 @@ const Detail = styled.div`
     color: white;
     width: 500px;
     height: 100%;
+    transition-duration: 0.5s;
 `;
-
+const CloseButton = styled.button`
+    position: absolute;
+    right: 30px;
+    top: 130px;
+    font-size: 25px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+`;
 const DetailImg = styled.img`
     width: 350px;
     object-fit: cover;

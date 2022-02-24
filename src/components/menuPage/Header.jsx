@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { PattyIndex, NavState } from "../../state/atoms";
+import { PattyIndex, NavState, AboutBurger } from "../../state/atoms";
 import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -8,8 +8,17 @@ const Header = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     const setNavState = useSetRecoilState(NavState);
+    const setAboutBurger = useSetRecoilState(AboutBurger);
     const changeNavState = (e) => {
         setNavState(e.target.id);
+        setAboutBurger({
+            name: "",
+            price: {
+                burgerOnly: 0,
+                largeSet: 0,
+                smallSet: 0,
+            },
+        });
     };
     return (
         <HeaderWrapper>
