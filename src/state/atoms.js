@@ -9,3 +9,15 @@ export const NavState = atom({
     key: "NavState",
     default: "premium",
 });
+
+export const AboutBurger = atom({
+    key: "aboutBurger",
+    default: {
+        name: "",
+        price: {
+            burgerOnly: 0,
+            largeSet: 0,
+            smallSet: 0,
+        },
+    },
+});

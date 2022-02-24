@@ -1,22 +1,17 @@
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
-import { PattyIndex, NavState } from "../../state/atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { PattyIndex, NavState, AboutBurger } from "../../state/atoms";
 import burgerData from "../../burgerDB/data.json";
 import { useEffect, useState } from "react";
+import DetailInfo from "./DetailInfo";
 
 const ContentArea = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     const navState = useRecoilValue(NavState);
     const [contentsList, setContentsList] = useState("");
-    const [aboutBurger, setAboutBurger] = useState({
-        name: "",
-        price: {
-            burgerOnly: 0,
-            largeSet: 0,
-            smallSet: 0,
-        },
-    });
+    const aboutBurger = useRecoilValue(AboutBurger);
+    const setAboutBurger = useSetRecoilState(AboutBurger);
 
     useEffect(() => {
         if (patties[pattyIndex] === "BEEF") {
@@ -74,20 +69,7 @@ const ContentArea = () => {
                         );
                     })}
             </BurgerWapper>
-            {aboutBurger.name === "" ? null : (
-                <Detail>
-                    <DetailImg
-                        src={`../img/burgerImg/${aboutBurger.name}.png`}
-                    />
-                    {aboutBurger.name}
-                    <div>버거 단품</div>
-                    <div>{aboutBurger.price.burgerOnly}</div>
-                    <div>Small Set</div>
-                    <div>{aboutBurger.price.smallSet}</div>
-                    <div>Large Set</div>
-                    <div>{aboutBurger.price.largeSet}</div>
-                </Detail>
-            )}
+            {aboutBurger.name.length > 0 ? <DetailInfo /> : null}
         </ContentWrapper>
     );
 };
@@ -123,20 +105,5 @@ const BurgerBlock = styled.div`
 const Img = styled.img`
     width: 200px;
     height: 150px;
-    object-fit: cover;
-`;
-const Detail = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    width: 500px;
-    height: 100%;
-`;
-
-const DetailImg = styled.img`
-    width: 350px;
     object-fit: cover;
 `;
