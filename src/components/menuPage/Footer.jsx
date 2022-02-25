@@ -19,18 +19,18 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrapper = styled.footer`
-    width: 95%;
+    width: 96%;
     height: 65px;
     background-color: orange;
     display: flex;
-    position: absolute;
+    position: relative;
+    transform: translateY(-100%);
     align-items: center;
     justify-content: space-between;
     font-family: sans-serif;
     font-size: 12px;
     font-weight: 900;
     padding: 0 2%;
-    // bottom: 0px;
 `;
 const GitHub = styled.div`
     width: 30px;

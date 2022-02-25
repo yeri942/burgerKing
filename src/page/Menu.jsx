@@ -16,5 +16,5 @@ const Menu = () => {
 export default Menu;
 
 const MenuPageWrapper = styled.div`
-    height: 77.7vh;
+    height: calc(100vh - 165px);
 `;

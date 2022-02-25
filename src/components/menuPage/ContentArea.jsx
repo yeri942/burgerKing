@@ -42,7 +42,7 @@ const ContentArea = () => {
     });
     return (
         <ContentWrapper>
-            <BurgerWapper>
+            <BurgerWapper ss={aboutBurger.name}>
                 {contentsList &&
                     contentsList.map((burgerKind) => {
                         return (
@@ -78,24 +78,29 @@ export default ContentArea;
 
 const ContentWrapper = styled.div`
     margin-top: 100px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
     background-color: #f4ebdc;
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 65px;
 `;
 const BurgerWapper = styled.div`
+    width: ${(props) => (props.ss.length > 0 ? "calc(100% - 500px)" : "100%")};
     color: black;
-    padding: 20px 10px 10px 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    // height: 100%;
+    // padding: 30px 10px 10px 10px;
+    display: inline-flex;
     justify-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 `;
 const BurgerBlock = styled.div`
     width: 200px;
     height: 170px;
-    margin: 20px 20px;
+    margin: 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

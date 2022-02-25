@@ -47,12 +47,13 @@ export default Header;
 
 const HeaderWrapper = styled.header`
     display: flex;
-    position: absolute;
+    position: fixed;
     align-items: center;
     height: 100px;
     width: 100%;
     top: 0;
     background-color: orange;
+    z-index: 999;
 `;
 const Nav = styled.div`
     width: 100%;

@@ -32,7 +32,10 @@ const DetailInfo = () => {
 export default DetailInfo;
 
 const Detail = styled.div`
-    display: flex;
+    // margin-top: 100px;
+    // position: fixed;
+    right: 0;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -40,6 +43,8 @@ const Detail = styled.div`
     color: white;
     width: 500px;
     height: 100%;
+    min-height: 100%;
+    // padding: 0 0 65px 0;
     transition-duration: 0.5s;
 `;
 const CloseButton = styled.button`
