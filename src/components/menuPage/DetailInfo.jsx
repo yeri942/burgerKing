@@ -18,46 +18,56 @@ const DetailInfo = () => {
     return (
         <Detail>
             <CloseButton onClick={CloseDetailInfo}>X</CloseButton>
+
             <DetailImg src={`../img/burgerImg/${aboutBurger.name}.png`} />
-            {aboutBurger.name}
-            <div>버거 단품</div>
-            <div>{aboutBurger.price.burgerOnly}</div>
-            <div>Small Set</div>
-            <div>{aboutBurger.price.smallSet}</div>
-            <div>Large Set</div>
-            <div>{aboutBurger.price.largeSet}</div>
+            <BurgerName>{aboutBurger.name}</BurgerName>
+            <Price>
+                <div id="cls"> 버거 단품 </div>
+                <div>{aboutBurger.price.burgerOnly}</div>
+                <div id="cls"> Small Set </div>
+                <div>{aboutBurger.price.smallSet}</div>
+                <div id="cls"> Large Set </div>
+                <div>{aboutBurger.price.largeSet}</div>
+            </Price>
         </Detail>
     );
 };
 export default DetailInfo;
 
 const Detail = styled.div`
-    // margin-top: 100px;
-    // position: fixed;
     right: 0;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    color: white;
+    border-left: 2px solid #51231495;
+    color: black;
     width: 500px;
     height: 100%;
-    min-height: 100%;
-    // padding: 0 0 65px 0;
     transition-duration: 0.5s;
+    font-size: 18px;
+    font-weight: 900;
 `;
 const CloseButton = styled.button`
-    position: absolute;
-    right: 30px;
-    top: 130px;
     font-size: 25px;
-    color: white;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    margin: 5px 0 10px 450px;
 `;
 const DetailImg = styled.img`
     width: 350px;
     object-fit: cover;
+`;
+const BurgerName = styled.div``;
+const Price = styled.div`
+    width: 100%;
+    padding: 13px 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    & > #cls {
+        border-bottom: 1px solid black;
+        margin-top: 7px;
+    }
 `;
