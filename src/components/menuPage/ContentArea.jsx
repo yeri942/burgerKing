@@ -77,6 +77,7 @@ const ContentArea = () => {
 export default ContentArea;
 
 const ContentWrapper = styled.div`
+    font-family: "Noto Sans KR";
     margin-top: 100px;
     display: inline-flex;
     align-items: center;
@@ -88,7 +89,7 @@ const ContentWrapper = styled.div`
     padding-bottom: 65px;
 `;
 const BurgerWapper = styled.div`
-    width: ${(props) => (props.ss.length > 0 ? "calc(100% - 500px)" : "100%")};
+    width: ${(props) => (props.ss.length > 0 ? "calc(100% - 500px)" : "80%")};
     color: black;
     // height: 100%;
     // padding: 30px 10px 10px 10px;
