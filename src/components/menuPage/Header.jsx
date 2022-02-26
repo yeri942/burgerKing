@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PattyIndex, NavState, AboutBurger } from "../../state/atoms";
-import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const Header = () => {
@@ -9,8 +8,7 @@ const Header = () => {
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
     const setNavState = useSetRecoilState(NavState);
     const setAboutBurger = useSetRecoilState(AboutBurger);
-    const changeNavState = (e) => {
-        setNavState(e.target.id);
+    const clearAboutburgerValue = () => {
         setAboutBurger({
             name: "",
             price: {
@@ -20,10 +18,14 @@ const Header = () => {
             },
         });
     };
+    const changeNavState = (e) => {
+        setNavState(e.target.id);
+        clearAboutburgerValue();
+    };
     return (
         <HeaderWrapper>
             <Link to="/main">
-                <PrevButton />
+                <PrevButton onClick={clearAboutburgerValue} />
             </Link>
             <Nav>
                 <Kind>{patties[pattyIndex]} BURGER</Kind>
@@ -72,6 +74,7 @@ const NavZone = styled.ul`
         list-style: none;
         float: left;
         cursor: pointer;
+        margin: 5px 0;
         // color: ${(props) => (props.selected === 0 ? "white" : "red")};
     }
 `;
