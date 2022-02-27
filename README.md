@@ -36,7 +36,6 @@
 <br>
  
 ## 프로젝트 기술 스택
-React
-Recoil
-Styled Components
-<br>
+React<br>
+Recoil<br>
+Styled Components<br>
