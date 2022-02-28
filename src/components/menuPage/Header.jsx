@@ -6,6 +6,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 const Header = () => {
     const pattyIndex = useRecoilValue(PattyIndex);
     const patties = ["BEEF", "CHICKEN", "SHRIMP"];
+    const navState = useRecoilValue(NavState);
     const setNavState = useSetRecoilState(NavState);
     const setAboutBurger = useSetRecoilState(AboutBurger);
     const clearAboutburgerValue = () => {
@@ -22,21 +23,39 @@ const Header = () => {
         setNavState(e.target.id);
         clearAboutburgerValue();
     };
+
+    const clickPrevButton = () => {
+        setNavState("premium");
+        clearAboutburgerValue();
+    };
+
     return (
         <HeaderWrapper>
             <Link to="/main">
-                <PrevButton onClick={clearAboutburgerValue} />
+                <PrevButton onClick={clickPrevButton} />
             </Link>
             <Nav>
                 <Kind>{patties[pattyIndex]} BURGER</Kind>
                 <NavZone>
-                    <li id="premium" onClick={changeNavState}>
+                    <li
+                        id="premium"
+                        className={navState === "premium" ? "active" : null}
+                        onClick={changeNavState}
+                    >
                         Premium
                     </li>
-                    <li id="whopper" onClick={changeNavState}>
+                    <li
+                        id="whopper"
+                        className={navState === "whopper" ? "active" : null}
+                        onClick={changeNavState}
+                    >
                         Whopper
                     </li>
-                    <li id="jnb" onClick={changeNavState}>
+                    <li
+                        id="jnb"
+                        className={navState === "jnb" ? "active" : null}
+                        onClick={changeNavState}
+                    >
                         Junior&Burger
                     </li>
                 </NavZone>
@@ -75,7 +94,13 @@ const NavZone = styled.ul`
         float: left;
         cursor: pointer;
         margin: 5px 0;
-        // color: ${(props) => (props.selected === 0 ? "white" : "red")};
+        padding: 5px;
+    }
+    .active {
+        transition-duration: 1s;
+
+        // border-bottom: 20px solid red;
+        background-color: red;
     }
 `;
 const PrevButton = styled.button`
