@@ -94,13 +94,14 @@ const NavZone = styled.ul`
         float: left;
         cursor: pointer;
         margin: 5px 0;
-        padding: 5px;
+        padding: 10px;
     }
     .active {
         transition-duration: 1s;
 
         // border-bottom: 20px solid red;
-        background-color: red;
+        background-color: #512314;
+        color: orange;
     }
 `;
 const PrevButton = styled.button`
