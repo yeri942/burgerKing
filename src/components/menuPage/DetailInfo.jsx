@@ -47,17 +47,26 @@ const Detail = styled.div`
     transition-duration: 0.5s;
     font-size: 18px;
     font-weight: 900;
+    @media (max-width: 1025px) {
+        padding: 30px 0;
+        border-left: none;
+        border-bottom: 2px solid #51231495;
+        width: 100%;
+    }
 `;
 const CloseButton = styled.button`
     font-size: 25px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin: 5px 0 10px 450px;
+    margin: 5px 0 10px 90%;
 `;
 const DetailImg = styled.img`
     width: 350px;
     object-fit: cover;
+    @media (max-width: 480px) {
+        width: 70%;
+    }
 `;
 const BurgerName = styled.div``;
 const Price = styled.div`

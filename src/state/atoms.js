@@ -21,3 +21,8 @@ export const AboutBurger = atom({
         },
     },
 });
+
+export const dropdownState = atom({
+    key: "dropdownState",
+    default: false,
+});

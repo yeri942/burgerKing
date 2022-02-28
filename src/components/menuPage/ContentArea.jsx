@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { PattyIndex, NavState, AboutBurger } from "../../state/atoms";
+import {
+    PattyIndex,
+    NavState,
+    AboutBurger,
+    dropdownState,
+} from "../../state/atoms";
 import burgerData from "../../burgerDB/data.json";
 import { useEffect, useState } from "react";
 import DetailInfo from "./DetailInfo";
@@ -12,7 +17,7 @@ const ContentArea = () => {
     const [contentsList, setContentsList] = useState("");
     const aboutBurger = useRecoilValue(AboutBurger);
     const setAboutBurger = useSetRecoilState(AboutBurger);
-
+    const dropdown = useRecoilValue(dropdownState);
     useEffect(() => {
         if (patties[pattyIndex] === "BEEF") {
             if (navState === "premium") {
@@ -41,7 +46,7 @@ const ContentArea = () => {
         }
     });
     return (
-        <ContentWrapper>
+        <ContentWrapper dropdownState={dropdown}>
             <BurgerWapper ss={aboutBurger.name}>
                 {contentsList === "" ? (
                     <EmptyBlock>
@@ -84,7 +89,7 @@ export default ContentArea;
 
 const ContentWrapper = styled.div`
     font-family: "Noto Sans KR";
-    margin-top: 100px;
+    margin-top: ${(props) => (props.dropdownState ? 0 : "100px")};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -93,6 +98,12 @@ const ContentWrapper = styled.div`
     height: auto;
     min-height: 100%;
     padding-bottom: 65px;
+    @media (max-width: 1025px) {
+        flex-direction: column-reverse;
+    }
+    @media (max-width: 480px) {
+        margin-top: ${(props) => (props.dropdownState ? 0 : "65px")};
+    }
 `;
 const BurgerWapper = styled.div`
     width: ${(props) => (props.ss.length > 0 ? "calc(100% - 500px)" : "80%")};
@@ -101,6 +112,10 @@ const BurgerWapper = styled.div`
     justify-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    @media (max-width: 1025px) {
+        width: 100%;
+        margin: 30px 0;
+    }
 `;
 const BurgerBlock = styled.div`
     width: 200px;
@@ -110,12 +125,21 @@ const BurgerBlock = styled.div`
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    @media (max-width: 480px) {
+        width: 100px;
+        height: 127.5px;
+        margin: 10px 20px;
+        font-size: 13px;
+    }
 `;
 
 const Img = styled.img`
     width: 200px;
     height: 150px;
     object-fit: cover;
+    @media (max-width: 480px) {
+        width: 150px;
+    }
 `;
 
 const EmptyBlock = styled.div`
