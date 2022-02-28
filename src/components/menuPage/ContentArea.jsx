@@ -97,8 +97,6 @@ const ContentWrapper = styled.div`
 const BurgerWapper = styled.div`
     width: ${(props) => (props.ss.length > 0 ? "calc(100% - 500px)" : "80%")};
     color: black;
-    // height: 100%;
-    // padding: 30px 10px 10px 10px;
     display: inline-flex;
     justify-items: center;
     flex-wrap: wrap;

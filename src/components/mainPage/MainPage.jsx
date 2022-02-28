@@ -156,7 +156,12 @@ const Main = () => {
                     <BurgerImg
                         style={{
                             background: `center / cover no-repeat url(../img/${patties[pattyIndex]}_patty.png)`,
-                            transition: ScrollY < 108 ? "1s" : "0s",
+                            transition:
+                                ScrollY < 108
+                                    ? "1s"
+                                    : GobuttonState
+                                    ? "1s"
+                                    : "0s",
                         }}
                         scroll={ScrollY}
                         go={GobuttonState}
@@ -285,7 +290,6 @@ const GoButton = styled.div`
     background-color: orange;
     background-size: cover;
     border-radius: 50%;
-    // box-shadow: 10px 5px 0px red, -5px -15px 0px green;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

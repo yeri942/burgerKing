@@ -98,8 +98,6 @@ const NavZone = styled.ul`
     }
     .active {
         transition-duration: 1s;
-
-        // border-bottom: 20px solid red;
         background-color: #512314;
         color: orange;
     }

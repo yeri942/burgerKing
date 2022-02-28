@@ -35,7 +35,6 @@ const FooterWrapper = styled.footer`
 const GitHub = styled.div`
     width: 30px;
     height: 30px;
-    // background-color: red;
     background-image: url("./img/github.png");
     background-size: cover;
     opacity: 0.5;
