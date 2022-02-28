@@ -156,6 +156,7 @@ const Main = () => {
                     <BurgerImg
                         style={{
                             background: `center / cover no-repeat url(../img/${patties[pattyIndex]}_patty.png)`,
+                            transition: ScrollY < 108 ? "1s" : "0s",
                         }}
                         scroll={ScrollY}
                         go={GobuttonState}
@@ -340,6 +341,10 @@ const BurgerImg = styled.div`
                 : "blur(2px)"
             : "blur(0px)"};
     transition: 1s;
+    #patty {
+        transition: 0s;
+        background-color: black;
+    }
     &:nth-child(1) {
         top: ${(props) =>
             props.scroll > 100 ? (props.go === true ? "25%" : "5%") : "25%"};
