@@ -44,7 +44,7 @@ const Header = () => {
     return (
         <>
             <HeaderWrapper>
-                <Link to="/main">
+                <Link to="/">
                     <PrevButton onClick={clickPrevButton} />
                 </Link>
                 <Nav>

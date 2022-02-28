@@ -8,8 +8,8 @@ const App = () => {
     return (
         <RecoilRoot>
             <Routes>
-                <Route element={<Main />} path="/main" />
                 <Route element={<Menu />} path="/menu" />
+                <Route element={<Main />} path="/" />
             </Routes>
         </RecoilRoot>
     );
