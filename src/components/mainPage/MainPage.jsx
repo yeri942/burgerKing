@@ -203,6 +203,9 @@ const WrabScroll = styled.div`
     justify-content: center;
     width: 10%;
     right: 15%;
+    @media (max-width: 1281px) {
+        right: 5%;
+    }
 `;
 const Mouse = styled.img`
     position: absolute;
@@ -301,6 +304,12 @@ const GoButton = styled.div`
     &:hover {
         transform: rotate(20deg);
     }
+    @media (max-width: 1281px) {
+        width: 150px;
+        height: 150px;
+        right: 70px;
+        bottom: 50px;
+    }
 `;
 
 const GoText = styled.span`
@@ -312,6 +321,10 @@ const GoText = styled.span`
     }
     &:last-child {
         transform: translate(15px) skew(10deg, -25deg);
+    }
+    @media (max-width: 1281px) {
+        font-size: 30px;
+        text-shadow: -3.5px -3px 0px ${(props) => props.color};
     }
 `;
 
@@ -325,6 +338,12 @@ const Cursor = styled.div`
     height: 67.5px;
     z-index: 400;
     transform: rotate(-25deg);
+    @media (max-width: 1281px) {
+        width: 45px;
+        height: 55px;
+        right: 40px;
+        bottom: 70px;
+    }
 `;
 
 const WrabBurgerImg = styled.div`
@@ -395,5 +414,8 @@ const BurgerImg = styled.div`
         top: ${(props) =>
             props.scroll > 100 ? (props.go === true ? "62%" : "75%") : "62%"};
         z-index: 30;
+    }
+    @media (max-width: 1281px) {
+        margin-left: ${(props) => (props.scroll < 100 ? "25%" : "0%")};
     }
 `;

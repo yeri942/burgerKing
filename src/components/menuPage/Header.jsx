@@ -140,7 +140,7 @@ const NavZone = styled.ul`
             margin-left: 0px;
         }
     }
-    @media (max-width: 715px) {
+    @media (max-width: 838px) {
         display: none;
     }
     & > li {
@@ -176,7 +176,7 @@ const FontAwesomeIconStyled = styled(FontAwesomeIcon)`
     display: none;
     font-size: 30px;
     margin: 20px;
-    @media (max-width: 715px) {
+    @media (max-width: 838px) {
         display: block;
     }
 `;
