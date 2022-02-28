@@ -26,7 +26,7 @@ const ContentArea = () => {
             if (navState === "premium") {
                 setContentsList(burgerData.Chicken.Premium);
             } else if (navState === "whopper") {
-                setContentsList([]);
+                setContentsList("");
             } else if (navState === "jnb") {
                 setContentsList(burgerData.Chicken.JB);
             }
@@ -34,7 +34,7 @@ const ContentArea = () => {
             if (navState === "premium") {
                 setContentsList(burgerData.Shrimp.Premium);
             } else if (navState === "whopper") {
-                setContentsList([]);
+                setContentsList("");
             } else if (navState === "jnb") {
                 setContentsList(burgerData.Shrimp.JB);
             }
@@ -43,7 +43,12 @@ const ContentArea = () => {
     return (
         <ContentWrapper>
             <BurgerWapper ss={aboutBurger.name}>
-                {contentsList &&
+                {contentsList === "" ? (
+                    <EmptyBlock>
+                        <EmptyImg src={`../img/empty.png`} />
+                        <div>No burgers</div>
+                    </EmptyBlock>
+                ) : (
                     contentsList.map((burgerKind) => {
                         return (
                             <BurgerBlock
@@ -67,7 +72,8 @@ const ContentArea = () => {
                                 </div>
                             </BurgerBlock>
                         );
-                    })}
+                    })
+                )}
             </BurgerWapper>
             {aboutBurger.name.length > 0 ? <DetailInfo /> : null}
         </ContentWrapper>
@@ -111,5 +117,18 @@ const BurgerBlock = styled.div`
 const Img = styled.img`
     width: 200px;
     height: 150px;
+    object-fit: cover;
+`;
+
+const EmptyBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    opacity: 0.6;
+`;
+
+const EmptyImg = styled.img`
+    width: 120px;
     object-fit: cover;
 `;
