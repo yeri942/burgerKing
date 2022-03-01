@@ -133,6 +133,7 @@ const Nav = styled.div`
 `;
 const NavZone = styled.ul`
     width: 50%;
+    margin-right: 2%;
     display: flex;
     justify-content: flex-end;
     color: #512314;
