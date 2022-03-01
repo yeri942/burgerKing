@@ -238,14 +238,14 @@ const PrevButton = styled.button`
     margin-right: 40%;
     background: no-repeat url("./img/left.png");
     background-size: cover;
-    width: 100px;
-    height: 100px;
+    width: 5%;
+    height: 100%;
     border: none;
     object-fit: cover;
 `;
 const NextButton = styled.button`
-    width: 100px;
-    height: 100px;
+    width: 5%;
+    height: 100%;
     background: no-repeat url("./img/right.png");
     background-size: cover;
     border: none;
