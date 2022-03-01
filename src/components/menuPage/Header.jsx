@@ -44,7 +44,7 @@ const Header = () => {
     return (
         <>
             <HeaderWrapper>
-                <Link to="/">
+                <Link to="/" style={{ marginLeft: "2%" }}>
                     <PrevButton onClick={clickPrevButton} />
                 </Link>
                 <Nav>
@@ -132,8 +132,9 @@ const Nav = styled.div`
     color: #512314;
 `;
 const NavZone = styled.ul`
-    width: 30%;
-    margin-right: 5%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
     color: #512314;
     font-size: 2.3vh;
     & > :not(:first-child) {
@@ -149,7 +150,7 @@ const NavZone = styled.ul`
         list-style: none;
         float: left;
         cursor: pointer;
-        padding: 3%;
+        padding: 2%;
     }
     .active {
         transition-duration: 1s;
@@ -185,11 +186,12 @@ const FontAwesomeIconStyled = styled(FontAwesomeIcon)`
 
 const DropdownNav = styled.div`
     background-color: orange;
-    margin-top: 100px;
+    margin-top: 13.3vh;
+    font-size: 2.5vh;
     & > li {
         display: flex;
         list-style: none;
-        padding: 15px 0;
+        padding: 3% 0;
         width: 100%;
         justify-content: center;
         color: #512314;

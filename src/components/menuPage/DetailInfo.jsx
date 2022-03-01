@@ -47,7 +47,7 @@ const Detail = styled.div`
     font-size: 2.7vh;
     font-weight: 900;
     @media (max-width: 1025px) {
-        padding: 30px 0;
+        padding: 5px 0 30px 0;
         border-left: none;
         border-bottom: 2px solid #51231495;
         width: 100%;
