@@ -209,7 +209,7 @@ const WrabScroll = styled.div`
 `;
 const Mouse = styled.img`
     position: absolute;
-    width: 100px;
+    width: 50%;
 `;
 const DownBlink = keyframes`
     0%{opacity:0}
@@ -220,7 +220,7 @@ const DownBlink = keyframes`
 `;
 const Down = styled.img`
     position: absolute;
-    width: 50px;
+    width: 30%;
     top: 70%;
     animation: ${DownBlink} 2s 0s infinite linear alternate;
 `;
@@ -235,7 +235,7 @@ const WrabBtn = styled.div`
     width: 100%;
 `;
 const PrevButton = styled.button`
-    margin-right: 600px;
+    margin-right: 40%;
     background: no-repeat url("./img/left.png");
     background-size: cover;
     width: 100px;
@@ -266,8 +266,8 @@ const WrabMainTexts = styled.div`
     width: 80%;
 `;
 const MainText = styled.div`
-    margin-left: 50px;
-    font-size: 7em;
+    margin-left: 10%;
+    font-size: 7vw;
     font-weight: 900;
     color: #512314;
     opacity: ${(props) => (props.scroll > 100 ? 0 : 1)};
@@ -286,10 +286,10 @@ const PattyText = styled.div`
 
 const GoButton = styled.div`
     position: absolute;
-    right: 100px;
-    bottom: 70px;
-    width: 200px;
-    height: 200px;
+    right: 6.5%;
+    bottom: 7%;
+    width: 13%;
+    height: 26%;
     background-color: orange;
     background-size: cover;
     border-radius: 50%;
@@ -314,8 +314,8 @@ const GoButton = styled.div`
 
 const GoText = styled.span`
     color: black;
-    font-size: 40px;
-    text-shadow: -5px -4px 0px ${(props) => props.color};
+    font-size: 2.7vw;
+    text-shadow: -0.3vw -0.2vw 0px ${(props) => props.color};
     &:first-child {
         transform: translate(-15px, 2px) skew(10deg, -25deg);
     }
@@ -330,12 +330,12 @@ const GoText = styled.span`
 
 const Cursor = styled.div`
     position: absolute;
-    right: 50px;
-    bottom: 80px;
+    right: 3.5%;
+    bottom: 7%;
     background-image: url("./img/cursor.png");
     background-size: cover;
-    width: 57px;
-    height: 67.5px;
+    width: 3.7%;
+    height: 9%;
     z-index: 400;
     transform: rotate(-25deg);
     @media (max-width: 1281px) {
@@ -355,8 +355,8 @@ const WrabBurgerImg = styled.div`
 const BurgerImg = styled.div`
     position: absolute;
     display: inline-block;
-    height: 150px;
-    width: 450px;
+    height: 10vw;
+    width: 28vw;
     filter: ${(props) =>
         props.scroll > 100
             ? props.go === true

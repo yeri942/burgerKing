@@ -115,7 +115,7 @@ const HeaderWrapper = styled.header`
     display: flex;
     position: fixed;
     align-items: center;
-    height: 100px;
+    height: 13.3%;
     width: 100%;
     top: 0;
     background-color: orange;
@@ -132,10 +132,12 @@ const Nav = styled.div`
     color: #512314;
 `;
 const NavZone = styled.ul`
-    margin-right: 30px;
+    width: 30%;
+    margin-right: 5%;
     color: #512314;
+    font-size: 2.3vh;
     & > :not(:first-child) {
-        margin-left: 30px;
+        margin-left: 1.2vw;
         @media (max-width: 775px) {
             margin-left: 0px;
         }
@@ -147,7 +149,7 @@ const NavZone = styled.ul`
         list-style: none;
         float: left;
         cursor: pointer;
-        padding: 10px;
+        padding: 3%;
     }
     .active {
         transition-duration: 1s;
@@ -158,15 +160,15 @@ const NavZone = styled.ul`
 const PrevButton = styled.button`
     background: no-repeat url("./img/left.png");
     background-size: cover;
-    margin: 10px;
-    width: 20px;
-    height: 20px;
+    margin-left: 90%;
+    width: 4vh;
+    height: 4vh;
     border: none;
     object-fit: cover;
 `;
 const Kind = styled.span`
-    margin-left: 30px;
-    font-size: 30px;
+    margin-left: 3%;
+    font-size: 4vh;
     @media (max-width: 480px) {
         margin-left: 2%;
         font-size: 20px;

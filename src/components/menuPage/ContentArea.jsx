@@ -118,27 +118,31 @@ const BurgerWapper = styled.div`
     }
 `;
 const BurgerBlock = styled.div`
-    width: 200px;
-    height: 170px;
-    margin: 10px 20px;
+    width: 25vh;
+    margin: 1.5% 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    @media (max-width: 480px) {
-        width: 100px;
-        height: 127.5px;
+    font-size: 2vh;
+    @media (max-width: 838px) {
+        width: 20%;
         margin: 10px 20px;
-        font-size: 13px;
+        font-size: 2vw;
+    }
+    @media (max-width: 480px) {
+        width: 35%;
+        margin: 10px 20px;
+        font-size: 3.5vw;
     }
 `;
 
 const Img = styled.img`
-    width: 200px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     @media (max-width: 480px) {
-        width: 150px;
+        width: 120%;
     }
 `;
 
@@ -151,6 +155,6 @@ const EmptyBlock = styled.div`
 `;
 
 const EmptyImg = styled.img`
-    width: 120px;
+    width: 70%;
     object-fit: cover;
 `;
