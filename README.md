@@ -20,17 +20,18 @@
 > 이를 토대로 “Choice your Burger” 웹을 기획하게되었습니다.
 >
 
-## 서비스 기능 소개
-
-
-
-
-
-
 ## 페이지별 화면
-
-
-
+# main 페이지
+<img width="60%" src="https://user-images.githubusercontent.com/97173976/156567581-398c8e52-bceb-40fc-b8bb-269fc1aa7896.gif"/>
+<img width="60%" src="https://user-images.githubusercontent.com/97173976/156567587-46130874-3741-444f-a692-f0eea9703b5d.gif"/>
+# menu 페이지
+< PC 화면 >
+<img width="60%" src="https://user-images.githubusercontent.com/97173976/156566974-7d81c34d-8318-4d2c-8c96-6ac82b1b1361.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/97173976/156566980-bfd50f31-105a-4977-9eb2-7f99c9e404c7.png"/>
+< 모바일 화면>
+<img width="40%" src="https://user-images.githubusercontent.com/97173976/156567387-6996ef96-ae3e-408c-ac18-9782c7857eb2.png"/>
+<img width="40%" src="https://user-images.githubusercontent.com/97173976/156567394-0ad60ad4-12dc-46f8-92a8-8b49fa993ce1.png"/>
+<img width="40%" src="https://user-images.githubusercontent.com/97173976/156567400-0d497605-9000-4c93-809e-8bf8dd94d69b.png"/>
 
 ## 프로젝트 기술 스택
 React<br>
