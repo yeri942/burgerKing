@@ -20,7 +20,7 @@ export default Footer;
 
 const FooterWrapper = styled.footer`
     width: 96%;
-    height: 10%;
+    height: 5vh;
     background-color: orange;
     display: flex;
     position: relative;

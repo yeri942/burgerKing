@@ -90,20 +90,20 @@ export default ContentArea;
 
 const ContentWrapper = styled.div`
     font-family: "Noto Sans KR";
-    margin-top: ${(props) => (props.dropdownState ? 0 : "100px")};
+    margin-top: ${(props) => (props.dropdownState ? 0 : "5vh")};
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     background-color: #f4ebdc;
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 65px;
+    // height: auto;
+    height: 95vh;
     @media (max-width: 1025px) {
         flex-direction: column-reverse;
     }
     @media (max-width: 480px) {
         margin-top: ${(props) => (props.dropdownState ? 0 : "65px")};
+        height: calc(100vh - 65px);
     }
 `;
 const BurgerWapper = styled.div`

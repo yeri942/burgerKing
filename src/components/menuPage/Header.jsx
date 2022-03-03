@@ -115,7 +115,7 @@ const HeaderWrapper = styled.header`
     display: flex;
     position: fixed;
     align-items: center;
-    height: 13.3%;
+    height: 10vh;
     width: 100%;
     top: 0;
     background-color: orange;
