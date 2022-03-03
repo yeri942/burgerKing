@@ -12,6 +12,9 @@ const Main = () => {
     const patties = ["beef", "chicken", "shrimp"];
     const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];
     const navigate = useNavigate();
+
+    console.log(window.innerWidth, window.innerHeight);
+
     const ClickGobutton = (path) => {
         setGobuttonState(true);
         setTimeout(() => {
@@ -38,13 +41,13 @@ const Main = () => {
             setGobuttonState(false);
         }
     };
-
     useEffect(() => {
         const watch = () => {
             window.addEventListener("scroll", handleFollow);
         };
         watch(); // addEventListener 함수를 실행
-
+        window.innerWidth < window.innerHeight &&
+            alert("모바일 환경에서는 가로모드로 이용해주세요");
         return () => {
             window.removeEventListener("scroll", handleFollow); // addEventListener 함수를 삭제
         };
@@ -284,8 +287,8 @@ const GoButton = styled.div`
     position: absolute;
     right: 6.5%;
     bottom: 7%;
-    width: 13%;
-    height: 26%;
+    width: 13vw;
+    height: 13vw;
     background-color: orange;
     background-size: cover;
     border-radius: 50%;
@@ -300,12 +303,6 @@ const GoButton = styled.div`
     &:hover {
         transform: rotate(20deg);
     }
-    @media (max-width: 1281px) {
-        width: 150px;
-        height: 150px;
-        right: 70px;
-        bottom: 50px;
-    }
 `;
 
 const GoText = styled.span`
@@ -313,14 +310,10 @@ const GoText = styled.span`
     font-size: 2.7vw;
     text-shadow: -0.3vw -0.2vw 0px ${(props) => props.color};
     &:first-child {
-        transform: translate(-15px, 2px) skew(10deg, -25deg);
+        transform: translate(-7%, 2%) skew(10deg, -25deg);
     }
     &:last-child {
-        transform: translate(15px) skew(10deg, -25deg);
-    }
-    @media (max-width: 1281px) {
-        font-size: 30px;
-        text-shadow: -3.5px -3px 0px ${(props) => props.color};
+        transform: translate(10%, -5%) skew(10deg, -25deg);
     }
 `;
 
@@ -334,12 +327,6 @@ const Cursor = styled.div`
     height: 9%;
     z-index: 400;
     transform: rotate(-25deg);
-    @media (max-width: 1281px) {
-        width: 45px;
-        height: 55px;
-        right: 40px;
-        bottom: 70px;
-    }
 `;
 
 const WrabBurgerImg = styled.div`
