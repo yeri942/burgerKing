@@ -162,7 +162,6 @@ const NavZone = styled.ul`
 const PrevButton = styled.button`
     background: no-repeat url("./img/left.png");
     background-size: cover;
-    // margin-left: 90%;
     width: 4vh;
     height: 4vh;
     border: none;
