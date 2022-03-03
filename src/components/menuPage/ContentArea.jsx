@@ -103,7 +103,7 @@ const ContentWrapper = styled.div`
     }
     @media (max-width: 480px) {
         margin-top: ${(props) => (props.dropdownState ? 0 : "65px")};
-        height: calc(100vh - 65px);
+        padding-bottom: 65px;
     }
 `;
 const BurgerWapper = styled.div`
