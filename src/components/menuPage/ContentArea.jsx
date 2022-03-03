@@ -96,8 +96,8 @@ const ContentWrapper = styled.div`
     justify-content: center;
     width: 100%;
     background-color: #f4ebdc;
-    // height: auto;
-    height: 95vh;
+    height: auto;
+    min-height: 95vh;
     @media (max-width: 1025px) {
         flex-direction: column-reverse;
     }
@@ -129,7 +129,7 @@ const BurgerBlock = styled.div`
     @media (max-width: 838px) {
         width: 20%;
         margin: 10px 20px;
-        font-size: 2vw;
+        font-size: 1.5vw;
     }
     @media (max-width: 480px) {
         width: 35%;

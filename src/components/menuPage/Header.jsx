@@ -186,7 +186,7 @@ const FontAwesomeIconStyled = styled(FontAwesomeIcon)`
 
 const DropdownNav = styled.div`
     background-color: orange;
-    margin-top: 13.3vh;
+    margin-top: 10vh;
     font-size: 2.5vh;
     & > li {
         display: flex;
