@@ -47,10 +47,14 @@ const Detail = styled.div`
     font-size: 2.7vh;
     font-weight: 900;
     @media (max-width: 1025px) {
+        font-size: 2.7vw;
         padding: 5px 0 30px 0;
         border-left: none;
         border-bottom: 2px solid #51231495;
         width: 100%;
+    }
+    @media (max-width: 480px) {
+        font-size: 2.7vh;
     }
 `;
 const CloseButton = styled.button`
@@ -59,6 +63,12 @@ const CloseButton = styled.button`
     border: none;
     cursor: pointer;
     margin: 3% 0 3% 90%;
+    @media (max-width: 1025px) {
+        font-size: 3.5vw;
+    }
+    @media (max-width: 480px) {
+        font-size: 3.5vh;
+    }
 `;
 const DetailImg = styled.img`
     width: 70%;
