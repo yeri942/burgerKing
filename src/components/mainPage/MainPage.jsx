@@ -12,11 +12,9 @@ const Main = () => {
     const patties = ["beef", "chicken", "shrimp"];
     const pattiesBackground = ["#5F3223", "#E16F1F", "#D72306"];
     const navigate = useNavigate();
-
     const ClickGobutton = (path) => {
         setGobuttonState(true);
         setTimeout(() => {
-            console.log("메뉴페이지로 갑니다앙");
             navigate(path);
         }, 1800);
     };
@@ -63,33 +61,35 @@ const Main = () => {
                         <Mouse src="./img/mousescroll.png"></Mouse>
                         <Down src="./img/down.png"></Down>
                     </WrabScroll>
-                ) : GobuttonState === false ? (
-                    <>
-                        <WrabBtn>
-                            <PrevButton
-                                type="button"
-                                onClick={clickPrevBtn}
-                                imgName={patties[pattyIndex]}
-                            ></PrevButton>
-                            <NextButton
-                                type="button"
-                                onClick={clickNextBtn}
-                                imgName={patties[pattyIndex]}
-                            ></NextButton>
-                        </WrabBtn>
+                ) : (
+                    !GobuttonState && (
+                        <>
+                            <WrabBtn>
+                                <PrevButton
+                                    type="button"
+                                    onClick={clickPrevBtn}
+                                    imgName={patties[pattyIndex]}
+                                ></PrevButton>
+                                <NextButton
+                                    type="button"
+                                    onClick={clickNextBtn}
+                                    imgName={patties[pattyIndex]}
+                                ></NextButton>
+                            </WrabBtn>
 
-                        <GoButton onClick={() => ClickGobutton("/menu")}>
-                            <GoText color={pattiesBackground[pattyIndex]}>
-                                Let's find
-                            </GoText>
-                            <GoText color={pattiesBackground[pattyIndex]}>
-                                {patties[pattyIndex]} burgers
-                            </GoText>
-                        </GoButton>
+                            <GoButton onClick={() => ClickGobutton("/menu")}>
+                                <GoText color={pattiesBackground[pattyIndex]}>
+                                    Let's find
+                                </GoText>
+                                <GoText color={pattiesBackground[pattyIndex]}>
+                                    {patties[pattyIndex]} burgers
+                                </GoText>
+                            </GoButton>
 
-                        <Cursor />
-                    </>
-                ) : null}
+                            <Cursor />
+                        </>
+                    )
+                )}
 
                 <WrabMainTexts>
                     <div>

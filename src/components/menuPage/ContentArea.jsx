@@ -68,6 +68,7 @@ const ContentArea = () => {
                                         },
                                     })
                                 }
+                                key={burgerKind.name}
                             >
                                 <Img
                                     src={`../img/burgerImg/${burgerKind.name}.png`}
@@ -80,7 +81,7 @@ const ContentArea = () => {
                     })
                 )}
             </BurgerWapper>
-            {aboutBurger.name.length > 0 ? <DetailInfo /> : null}
+            {aboutBurger.name.length > 0 && <DetailInfo />}
         </ContentWrapper>
     );
 };
